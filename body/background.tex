@@ -1,0 +1,68 @@
+\chapter{Background}
+
+\label{ch:background}
+
+\section{Iterative Software Development}
+
+\section{User Experience Design}
+% User Journeys
+
+% Jank, disruptions, etc
+
+\section{Cross-platform Development}
+
+
+
+\section{The Existing Sage Application}
+% Intro
+\subsection{Functional overview}
+After granting the app permissions for notification access in an onboarding sequence, the app starts up and offers its core functionality: a task list. Users may create and edit tasks. Each task may be recurring daily, and may block notifications. Users may then at any time start working on a task, triggering a running timer which may block all incoming notifications while active. A task can be completed, or returned to any time later with a break. All this activity is stored within the client and can be displayed to the user through graphs as a form of feedback on their productivity.
+
+
+\subsection{Limiting issues}
+However, there are several issues and limiting features with the current implementation of Sage.
+
+\begin{itemize}
+    \item Does not fully block notifications. Certain edge cases allow notifications to still slip through.
+    \item Currently implemented as an Android app, no extensibility to iOS or desktop users.
+    \item Completely local: no data backups or export, no online cloud synchronisation.
+\end{itemize}
+
+
+\section{Project (Re-)specification}
+% Feasibility study
+Proposing a re-implementation software project naturally begs the following questions:
+- What advantages will the effort yield, and is it worth the effort?
+- Will it perform as before, or are there be any compromises as a result of the move?
+
+As such, some initial research had to be conducted to address the concerns. 
+Studying the existing codebase and Android developer documentation 
+
+% Requirements Gathering
+As in any other software engineering problem, the first step is to gather an initial list of requirements that will form the specification of what the final product must achieve. 
+
+
+
+The re-implementation of the Sage application thus should fulfill the following set of requirements in its MVP:
+
+\underline{Functional Requirements}
+\begin{itemize}
+    \item Re-implement the full feature set of the existing application.
+    \item Fix notification blocking functionality with the use of \textit{Do not Disturb} mode, instead of the current implementation.
+    \item Add online cloud storage and synchronisation of user data.
+\end{itemize}
+
+\underline{Non-functional Requirements}
+\begin{itemize}
+    \item Must be performant without excessive jank, jitter or loading delay.
+    \item In the event of a crash, the application should recover gracefully and inform the user of any inconsistencies in their data caused by the crash (interrupting a focus period, etc).
+\end{itemize}
+
+
+\section{Implementation Plan}
+
+
+\section{Evaluation Plan}
+
+
+\section{Ethical, Legal and Safety Plan}

@@ -1,0 +1,40 @@
+\documentclass[a4paper,12pt,twoside]{report}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
+
+\include{thesis.preamble}
+
+\begin{document}
+
+\title{\LARGE {\bf Attention-Preserving Technology}\\
+ \vspace*{6mm}
+}
+
+\author{Darrick Lau}
+\submitdate{1st February 2021}
+
+\normallinespacing
+\maketitle
+\preface
+\input{abstract/abstract}
+\input{acknowledgements/acknowledgements}
+\input{dedication/dedication}
+
+\body
+\input{introduction/introduction}
+\input{body/background}
+\input{body/research}
+\input{body/implementation}
+\input{body/evaluation}
+
+% body of thesis comes here
+
+\input{conclusion/conclusion}
+
+\appendix
+% appendices come here
+
+\addcontentsline{toc}{chapter}{References}
+\bibliography{bibliography/bibliography}
+\bibliographystyle{ieeetr}
+
+\end{document}
