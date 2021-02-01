@@ -2,31 +2,33 @@
 
 \label{ch:background}
 
-\section{Iterative Software Development}
-
 \section{User Experience Design}
-% User Journeys
+The most critical aspect of any app is the user experience. Therefore, this section will briefly outline a few key goals that this project seeks to achieve in the re-implementation of the existing application.
+
+\subsection{Problem Statement}
+When faced with a difficult task, keeping and maintaining one's focus on solving the problem is extremely daunting. There are many factors that determine the extent to which a person will succeed at this, and while some may be geneticically-attributed, there are many external factors within one's control that can be changed to improve one's focus. However, as we now know, the many distractions that are embedded into our lives now are very adept at drawing our attention back to them and away from the tasks that we may instead wish to focus on.
+
+Therefore, in order to create an effective solution that helps the user actively make choices to keep distractions away, the application must succeed at 
 
 % Jank, disruptions, etc
 
-\section{Cross-platform Development}
-
-
-
 \section{The Existing Sage Application}
-% Intro
 \subsection{Functional overview}
 After granting the app permissions for notification access in an onboarding sequence, the app starts up and offers its core functionality: a task list. Users may create and edit tasks. Each task may be recurring daily, and may block notifications. Users may then at any time start working on a task, triggering a running timer which may block all incoming notifications while active. A task can be completed, or returned to any time later with a break. All this activity is stored within the client and can be displayed to the user through graphs as a form of feedback on their productivity.
 
+While this is an admirable starting effort, there are many potential points of improvement from a user-experience perspective.
 
 \subsection{Limiting issues}
 However, there are several issues and limiting features with the current implementation of Sage.
 
 \begin{itemize}
-    \item Does not fully block notifications. Certain edge cases allow notifications to still slip through.
-    \item Currently implemented as an Android app, no extensibility to iOS or desktop users.
+    \item The notification blocking feature is faulty. Certain edge cases allow notifications to still slip through.
+    \item Currently implemented as an Android app, no extensibility to iOS, desktop or mobile web users.
     \item Completely local: no data backups or export, no online cloud synchronisation.
 \end{itemize}
+
+
+
 
 
 \section{Project (Re-)specification}
@@ -35,13 +37,11 @@ Proposing a re-implementation software project naturally begs the following ques
 - What advantages will the effort yield, and is it worth the effort?
 - Will it perform as before, or are there be any compromises as a result of the move?
 
-As such, some initial research had to be conducted to address the concerns. 
-Studying the existing codebase and Android developer documentation 
+As such, some initial research had to be conducted to address the concerns.
+Studying the existing codebase and Android developer documentation
 
 % Requirements Gathering
-As in any other software engineering problem, the first step is to gather an initial list of requirements that will form the specification of what the final product must achieve. 
-
-
+As in any other software engineering problem, the first step is to gather an initial list of requirements that will form the specification of what the final product must achieve.
 
 The re-implementation of the Sage application thus should fulfill the following set of requirements in its MVP:
 
@@ -60,6 +60,13 @@ The re-implementation of the Sage application thus should fulfill the following 
 
 
 \section{Implementation Plan}
+
+\subsection{Iterative Software Development}
+Before develop
+
+
+\subsection{Cross-platform Development}
+A practice that has
 
 
 \section{Evaluation Plan}
