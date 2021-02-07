@@ -53,15 +53,19 @@ A successful well-being app therefore has to not only help the user form healthy
 \subsection{Functional overview}
 After granting the app permissions for notification access in an onboarding sequence, the app starts up and offers its core functionality: a task list. Users may create and edit tasks. Each task may be recurring daily, and may block notifications. Users may then at any time start working on a task, triggering a running timer which may block all incoming notifications while active. A task can be completed, or returned to any time later with a break. All this activity is stored within the client and can be displayed to the user through graphs as a form of feedback on their productivity.
 
+While this is an admirable starting effort, there are many potential points of improvement from a user-experience perspective.
 
 \subsection{Limiting issues}
 There are several issues and limiting features with the current implementation of Sage.
 
 \begin{itemize}
-    \item Does not fully block notifications. Certain edge cases allow notifications to still slip through.
-    \item Currently implemented as an Android app, no extensibility to iOS or desktop users.
+    \item The notification blocking feature is faulty. Certain edge cases allow notifications to still slip through.
+    \item Currently implemented as an Android app, no extensibility to iOS, desktop or mobile web users.
     \item Completely local: no data backups or export, no online cloud synchronisation.
 \end{itemize}
+
+
+
 
 
 \section{Project (Re-)specification}
@@ -98,6 +102,13 @@ The re-implementation of the Sage application thus should fulfill the following 
 \subsection{Iterative Software Development}
 
 \subsection{Cross-platform Development}
+
+\subsection{Iterative Software Development}
+Before develop
+
+
+\subsection{Cross-platform Development}
+A practice that has
 
 
 \section{Evaluation Plan}
