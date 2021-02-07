@@ -1,26 +1,61 @@
 \chapter{Background}
-
 \label{ch:background}
+\section{Biology Primer}
+To develop an app to fix the problem of attention deficiency, a short exploration into the mechanics of attention preservation is necessary.
+Within this scope, the conscious human processes new input primarily with three different parts of the brain: the limbic system, the prefrontal cortex and the parietal lobe. These can be respectively understood as the "chimp", "human" and "computer".
 
-\section{Iterative Software Development}
+\subsection{The Limbic System}
+The Limbic System carries out many functions that are considered "primal urges". Emotional responses to food, smell, social cognition, emotional memory (fight-or-flight responses to remembered stimuli), sexual behaviour and most importantly for this context, addiction and motivation \cite{rajmohan2007limbic}. All these functions can be summarised and grouped by one common concern: self and species preservation. The limbic system (henceforth referred to as the "chimp"), is adept at remembering emotional responses to previously experienced situations and inducing the optimal resopnse for self-preservation, should it find itself in a similar one. However, with respect to self-control and achieving one's long term goals, this may be undesirable. The stress and emotional drain often experienced by an individual trying to solve a difficult problem gets registered as a "threat". When an individual is subsequently faced with the choice of working or procrastinating, their inner chimp finds itself in a simulated "fight or flight" situation. Social media apps and games are placed in a perfect position to offer the escapism the chimp requires to enact it's "flight" response, as they provide an easily accessible alternative to the "threat" of having to do work.
 
-\section{User Experience Design}
-% User Journeys
+\subsection{The Prefrontal Cortex}
+The Prefrontal Cortex (PFC) is the part of the brain largely associated with conscious thought and rational self-control. Many studies in self-regulation have shown that the limbic system and prefrontal context often have large amounts of correlated activity in fMRI scans. The prevailing theory is therefore that the PFC and the limbic system are often at odds, and a variety of factors determine which emerges victorious in controlling the individual's course of action\cite{TODO}.
 
-% Jank, disruptions, etc
+\subsection{The Parietal Lobe}
 
-\section{Cross-platform Development}
+\section{Self-regulatory Failure}
+Resisting the urge to check one's phone or play video games is a prime modern example of self-regulatory failure that reflects much in common with addiction-like behaviour in dieters, smokers and substance abusers. App-fueled procrastination may not be as lethal as substance abuse or obesity, but there nonetheless exists a very slippery slope into internet addiction that may ensnare the average person. Heatherton and Wagner elaborate in \cite{heatherton2011cognitive} that there are a few common causes for self-regulatory failure: negative moods, lapse-activated consumption, cue exposure and self-regulatory resource depletion.
+
+\subsection{Resource Depletion \& the Strength Model of Self-Control}
+Baumeister and Heatherton \cite{baumeister1996self} initially proposed in 1996 that conscious self-control against one's impulses draws from a global resource pool that depletes as one uses it further. Since then, many studies have been conducted to support this hypothesis. It has been shown that it is possible for individuals to increase this self-regulatory ability \cite{TODO}, but the strength model by construction dictates that it is possible to exhaust one's self-control and require a way to "replenish" it. Each individual may have different emotional responses stored by their "chimp", therefore creating a large variance in individuals' ability to stay focused on a task.
+
+This suggests that as long as a distracting alternate stimulus is present, self-regulatory failure is not a question of "if", but "when". For traditional office work settings, this effect is slightly ameliorated by the social norms enforced by the office culture. However, for a person working from home, the distraction unfortunately exists on the same device that enables productivity and there is no one else around to keep the chimp in check.
 
 
+\subsection{Cue Exposure}
+A cue in this context is defined as a piece of sensory stimulus which has an association to a certain consumption-related behaviour. The smell of food for a dieter, the sight of a beer for a heavy drinker. Cues have been shown to increase cravings, draw attention and increase likelihood of consumption \cite{jansen1998learning}. Furthermore, multiple studies have shown that individuals are often unaware of how cues affect them on a conscious level\cite{stacy2010implicit}, and so it becomes difficult for a struggling individual to pinpoint what it is exactly that causes their self-control to lapse.
+
+The first example of addictive software engineering is the push-notification, one of the core tools of user-experience (UX) design. The premise seems simple: software engineers needed a way of bringing a user's attention to key information. This is not a "new" phenomenon, as pagers and message alerts have been around for as long as phones have existed. However, the graphical interface of the smartphone takes this to a new level. The modern push notification engages many senses: a kinetic vibration, an audio alert and a visual alert window.
+
+Both Android and iOS have robust application programming interfaces (APIs) that enable developers to exercise a very high level of control over how their app sends and handles notifications \cite{TODO}. In the example of a social media message from a friend, this allows for extremely alluring design: an avatar of the friend and a short preview of the incoming message. Users are even empowered to make the experience of receiving a notification as enjoyable for themselves as possible. Facebook Messenger allows users to set nicknames for their friends. Most phones allow users to set specific alert sounds on a per-contact basis, allowing a user to know from audio perception alone who they are receiving a message from. A very common use case of this feature is setting a custom sound to differentiate messages comign from one's spouse, close friends or romantic interests. These features play on the natural human tendency to develop social relationships, as it is evolutionarily built-in to our "chimps" as an action that greatly enhances survival in the wild \cite{TODO}.
+
+Cue exposure need not even be as explicit as a push notification. The experience of using a social media app or playing a game is extremely pleasurable. Beautiful colour palettes, high-resolution artwork and buttery-smooth animations are a staple in successful apps. All these factors enable the "chimp" to register a positive emotional response to act of phone use. Therefore, the very presence of the phone is a form of cue exposure that constantly forces the user to exercise self-restraint.
+
+\subsection{Lapse-activated Consumption}
+A 1975 study showed that the consumption of a small amount of an addictive substance (in this case, a milkshake on a test audience of dieters) paradoxically caused dieters to consume more food afterwards, in contrast to the control group of non-dieters who ate less \cite{herman1975restrained}. The exact reason as to why this phenomenon occurs is not fully clear, but the implications of its existence are. Picking up one's phone for a short break from work can often snowball into a longer-than-intended session of scrolling social media. Playing "just one round" of a game often ends up being anything but. We will explore in later sections what mechanisms are in place that potentially cause such activities to be so difficult to quit.
+
+\subsection{Motivation and Persistence}
+Having explored all the ways in which self-control can fail due to how strong our in-built tendencies are, perhaps then there is a way in which we may use these natural tendencies to our advantage.
+% Is there any way to convince the chimp to want to do work?
+
+% How can one increase their desire and motivation to work on long-term goals?
+
+
+% How do the parts work?
+\section{Addictive Design: Social Media Apps}
+Social media offers novelty at every turn, with variable rewards
+
+\section{Addictive Design: Gaming}
+Gaming, on the other hand, are capable of offering a dense, fast-paced, highly engaging experience.
+
+A successful well-being app therefore has to not only help the user form healthy habits that help them avoid self-regulation pitfalls, but offer new "hooks" to help to keep their inner chimp on their side.
 
 \section{The Existing Sage Application}
-% Intro
 \subsection{Functional overview}
 After granting the app permissions for notification access in an onboarding sequence, the app starts up and offers its core functionality: a task list. Users may create and edit tasks. Each task may be recurring daily, and may block notifications. Users may then at any time start working on a task, triggering a running timer which may block all incoming notifications while active. A task can be completed, or returned to any time later with a break. All this activity is stored within the client and can be displayed to the user through graphs as a form of feedback on their productivity.
 
 
 \subsection{Limiting issues}
-However, there are several issues and limiting features with the current implementation of Sage.
+There are several issues and limiting features with the current implementation of Sage.
 
 \begin{itemize}
     \item Does not fully block notifications. Certain edge cases allow notifications to still slip through.
@@ -30,18 +65,18 @@ However, there are several issues and limiting features with the current impleme
 
 
 \section{Project (Re-)specification}
+Modern individuals are unable to focus and stay productive for a multitude of reasons. This project seeks to solve that problem by creating a user experience that leverages the concepts explored so far, such that less deliberate exercise of self-discipline is necessary for the user to remain on-task.
+
 % Feasibility study
 Proposing a re-implementation software project naturally begs the following questions:
 - What advantages will the effort yield, and is it worth the effort?
 - Will it perform as before, or are there be any compromises as a result of the move?
 
-As such, some initial research had to be conducted to address the concerns. 
-Studying the existing codebase and Android developer documentation 
+As such, some initial research had to be conducted to address the concerns.
+Studying the existing codebase and Android developer documentation
 
 % Requirements Gathering
-As in any other software engineering problem, the first step is to gather an initial list of requirements that will form the specification of what the final product must achieve. 
-
-
+As in any other software engineering problem, the first step is to gather an initial list of requirements that will form the specification of what the final product must achieve.
 
 The re-implementation of the Sage application thus should fulfill the following set of requirements in its MVP:
 
@@ -60,6 +95,9 @@ The re-implementation of the Sage application thus should fulfill the following 
 
 
 \section{Implementation Plan}
+\subsection{Iterative Software Development}
+
+\subsection{Cross-platform Development}
 
 
 \section{Evaluation Plan}
