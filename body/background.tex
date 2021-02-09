@@ -1,6 +1,6 @@
 \chapter{Background}
 \label{ch:background}
-With the goals and objectives of the project clearly laid out, it is now necessary to explore the factors which drive digital dependence. This chapter explores the concepts in biology and neuroscience which cause "hooked" users to become unfocused and unproductive despite their best efforts to do otherwise. It will then highlight a few clear examples of how the design of modern apps leverage these concepts and then offer a design and implementation plan that 
+With the goals and objectives of the project clearly laid out, it is now necessary to explore the factors which drive digital dependence. This chapter explores the concepts in biology and neuroscience which cause "hooked" users to become unfocused and unproductive despite their best efforts to do otherwise. It will then highlight a few clear examples of how the design of modern apps leverage these concepts and then offer a design and implementation plan that
 
 \section{Biology Primer}
 To develop an app to fix the problem of attention deficiency, a short exploration into the mechanics of attention preservation is necessary.
@@ -19,7 +19,7 @@ The Prefrontal Cortex (PFC) is the part of the brain largely associated with con
 One prevailing theory is therefore that the PFC and the limbic system are often at odds in tasks involving self-regulation \cite{heatherton2011cognitive} and that successful self-control is a balancing equation of the strength of so-called "bottom-up" impulses and "top-down" conscious thought. This sets the stage for our narrative: that the "chimp" within us and the "human" are always at odds when it comes to work and procrastination. While the PFC may wish to act in favour of our long-term goals, it often loses to the "chimp" and we are left with only a running commentary on our actions, despite our best wishes to do otherwise.
 
 \section{Self-regulatory Failure}
-Resisting the urge to check one's phone or play video games is a prime modern example of self-regulatory failure that reflects much in common with addiction-like behaviour in dieters, smokers and substance abusers. App-fueled procrastination may not be as lethal as substance abuse or obesity, but there nonetheless exists a very slippery slope into internet addiction that may ensnare the average person. Heatherton and Wagner elaborate in \cite{heatherton2011cognitive} that there are a few common causes for self-regulatory failure: negative moods, lapse-activated consumption, cue exposure and self-regulatory resource depletion.
+Resisting the urge to check one's phone or play video games is a prime modern example of self-regulatory failure that reflects much in common with addiction-like behaviour in dieters, smokers and substance abusers. App-fueled procrastination may not be as lethal as substance abuse or obesity, but there nonetheless exists a very slippery slope into internet addiction that may ensnare the average person. Heatherton and Wagner elaborate in \cite{heatherton2011cognitive} that there are a few common causes for self-regulatory failure, which can be separated into two categories. "Top-down" factors are associated with reduced capacity or strength of conscious self-control such as negative moods and self-regulatory resource depletion. "Bottom-up" methods refer to unconscious or natural impulses such as cue exposure or lapse-activated consumption.
 
 \subsection{Resource Depletion \& the Strength Model of Self-Control}
 Baumeister and Heatherton \cite{baumeister1996self} initially proposed in 1996 that conscious self-control against one's impulses draws from a global resource pool that depletes as one uses it further. Since then, many studies have released results in support of this hypothesis. The strength model by construction dictates that it is possible to exhaust one's self-control and must be replenished like any other resource.
@@ -38,13 +38,20 @@ Cue exposure need not even be as explicit as a push notification. The experience
 \subsection{Lapse-activated Consumption}
 A 1975 study showed that the consumption of a small amount of an addictive substance (in this case, a milkshake on a test audience of dieters) paradoxically caused dieters to consume more food afterwards, in contrast to the control group of non-dieters who ate less \cite{herman1975restrained}. The exact reason as to why this phenomenon occurs is not fully clear, but the implications of its existence are. Picking up one's phone for a short break from work can often snowball into a longer-than-intended session of scrolling social media. Playing "just one round" of a game often ends up being anything but. We will explore in later sections what mechanisms are in place that potentially cause such activities to be so difficult to quit.
 
-\subsection{Motivation and Persistence}
-Having explored all the ways in which self-control can fail due to how strong our in-built tendencies are, perhaps then there is a way in which we may use these natural tendencies to our advantage.
-% Is there any way to convince the chimp to want to do work?
-% How can one increase their desire and motivation to work on long-term goals?
-
 \subsection{Consequences of Distraction}
 Levy and colleagues showed that not only is the occurence of a disturbance a problem, but the "richness" of that disturbance was also detrimental to subjects' performance on cognitive tasks \cite{levy2016effect}.
+
+\subsection{Motivation and Persistence}
+We have seen so far that the outcome of a bout of self-control comes down to whether the strength of bottom-up impulses exceeds that of our top-down intentions. Most of the time, this tends to be the case. Having explored all the ways in which self-control can fail due to how strong our in-built tendencies are, perhaps then there is a way in which we may use these natural tendencies to our advantage, or at least increase the strength of top-down control.
+
+% How can one increase their desire and motivation to work on long-term goals?
+Muraven, Baumeister and colleagues conducted a study in which subjects performed consistent amounts of self-enforced exercise over two weeks. While this caused slightly decreased self-control capability on the day, this "strength drain" diminished rapidly by the day and resulted in increased success in other completely unrelated self-restraint tasks \cite{muraven1999longitudinal}. Muraven took these results again in a later study and found that "smokers who squeezed a handgrip or avoided sweets for two weeks before quitting cigarettes remained abstinent longer and had fewer lapses overall as compared to smokers who practiced tasks that did not require self-control" \cite{muraven2010practicing}. These studies, and many others like it, strongly support the previously mentioned strength model of self-control. 
+We have seen so far that the outcome of a bout of self-control comes down to whether the strength of bottom-up impulses exceeds that of our top-down intentions. Most of the time, this tends to be the case. Having explored all the ways in which self-control can fail due to how strong our in-built tendencies are, perhaps then there is a way in which we may use these natural tendencies to our advantage, or at least increase the strength of top-down control.
+
+% How can one increase their desire and motivation to work on long-term goals?
+Muraven, Baumeister and colleagues conducted a study in which subjects performed consistent amounts of self-enforced exercise over two weeks. While this caused slightly decreased self-control capability on the day, this "strength drain" diminished rapidly by the day and resulted in increased success in other completely unrelated self-restraint tasks \cite{muraven1999longitudinal}. Muraven took these results again in a later study and found that "smokers who squeezed a handgrip or avoided sweets for two weeks before quitting cigarettes remained abstinent longer and had fewer lapses overall as compared to smokers who practiced tasks that did not require self-control" \cite{muraven2010practicing}. These studies, and many others like it, strongly support the previously mentioned strength model of self-control. 
+
+% Is there any way to convince the chimp to want to do work?
 
 
 \section{Addictive Design: Social Media Apps}
@@ -110,10 +117,23 @@ The re-implementation of the Sage application thus should fulfill the following 
 
 \section{Implementation Plan}
 \subsection{Iterative Software Development}
+% What is agile software development
+
+% Motivation for developing features iteratively
+
+% Rough timeline, release plan and feature map
 
 \subsection{Cross-platform Development}
+% Motivation for X-platform
+
 
 \section{Evaluation Plan}
-
+% Proposed evaluation metrics
 
 \section{Ethical, Legal and Safety Plan}
+% Outline of concerns
+
+% Software licensing
+
+% User data for analytics
+
