@@ -45,12 +45,7 @@ Levy and colleagues showed that not only is the occurence of a disturbance a pro
 We have seen so far that the outcome of a bout of self-control comes down to whether the strength of bottom-up impulses exceeds that of our top-down intentions. Most of the time, this tends to be the case. Having explored all the ways in which self-control can fail due to how strong our in-built tendencies are, perhaps then there is a way in which we may use these natural tendencies to our advantage, or at least increase the strength of top-down control.
 
 % How can one increase their desire and motivation to work on long-term goals?
-Muraven, Baumeister and colleagues conducted a study in which subjects performed consistent amounts of self-enforced exercise over two weeks. While this caused slightly decreased self-control capability on the day, this "strength drain" diminished rapidly by the day and resulted in increased success in other completely unrelated self-restraint tasks \cite{muraven1999longitudinal}. Muraven took these results again in a later study and found that "smokers who squeezed a handgrip or avoided sweets for two weeks before quitting cigarettes remained abstinent longer and had fewer lapses overall as compared to smokers who practiced tasks that did not require self-control" \cite{muraven2010practicing}. These studies, and many others like it, strongly support the previously mentioned strength model of self-control. 
-We have seen so far that the outcome of a bout of self-control comes down to whether the strength of bottom-up impulses exceeds that of our top-down intentions. Most of the time, this tends to be the case. Having explored all the ways in which self-control can fail due to how strong our in-built tendencies are, perhaps then there is a way in which we may use these natural tendencies to our advantage, or at least increase the strength of top-down control.
-
-% How can one increase their desire and motivation to work on long-term goals?
-Muraven, Baumeister and colleagues conducted a study in which subjects performed consistent amounts of self-enforced exercise over two weeks. While this caused slightly decreased self-control capability on the day, this "strength drain" diminished rapidly by the day and resulted in increased success in other completely unrelated self-restraint tasks \cite{muraven1999longitudinal}. Muraven took these results again in a later study and found that "smokers who squeezed a handgrip or avoided sweets for two weeks before quitting cigarettes remained abstinent longer and had fewer lapses overall as compared to smokers who practiced tasks that did not require self-control" \cite{muraven2010practicing}. These studies, and many others like it, strongly support the previously mentioned strength model of self-control. 
-
+Muraven, Baumeister and colleagues conducted a study in which subjects performed consistent amounts of self-enforced exercise over two weeks. While this caused slightly decreased self-control capability on the day, this ``strength drain" diminished rapidly by the day and resulted in increased success in other completely unrelated self-restraint tasks \cite{muraven1999longitudinal}. Muraven took these results again in a later study and found that "smokers who squeezed a handgrip or avoided sweets for two weeks before quitting cigarettes remained abstinent longer and had fewer lapses overall as compared to smokers who practiced tasks that did not require self-control" \cite{muraven2010practicing}. These studies, and many others like it, strongly support the previously mentioned strength model of self-control. 
 % Is there any way to convince the chimp to want to do work?
 
 
@@ -129,11 +124,28 @@ The re-implementation of the Sage application thus should fulfill the following 
 
 \section{Evaluation Plan}
 % Proposed evaluation metrics
+Instead of the typical academic approach of conducting individual user studies on a select sample, this app hopes to build feedback in to the app as part of the user experience. The app is thus hosted on a cloud provided with a generous "free tier" allowance, allowing us to experiment with a sizeable user base of what we estimate to be up to 500 users before cloud computing costs actually start to kick in.
+
+For this study, the concerns are not to develop the world's best-selling productivity app or to gain traction with a massive user base. This preliminary phase of the project is to find a way to measurably determine how effectively the Sage platform does its job of helping users stay on task. The initial metrics are proposed as a starting point. The refinement, reselection and validity of these metrics will have to be determined as part of future work when the app is released in beta to the test audience.
+
+The app will be released to students in Imperial College London, with its intentions clearly stated in both publicity efforts and as part of the in-app onboarding process. We hope to complete development on the alpha release in time for the Easter holiday, when students will be focusing on studying for exams. During this period, the following metrics will be measured:
+
+\begin{itemize}
+    \item Daily focus windows, defined as the time window in which a task is started, completed and a new task is not started within 10 minutes.
+    \item "Distress" button counts
+\end{itemize}
 
 \section{Ethical, Legal and Safety Plan}
 % Outline of concerns
+This project has no actionable safety concerns, since there is no physical product in which the user might harm themselves with. The primary concerns are with the use of third-party intellectual property and the safe and compliant use of user data for analytics and product improvement.
 
-% Software licensing
+\subsection{Software Licensing}
+This project will leverage the use of open-source software libraries and frameworks, the largest example of which is React Native. Open-source, by definition, allows the unrestricted redistribution and modification of a given piece of software for any purpose. As a secondary precaution, all packages used will be derived from the Node Package Manager (NPM) registry, which effectively serves as a central distribution point of open source packages pertaining to the javascript ecosystem (in which this project resides). 
 
-% User data for analytics
+Most, if not all packages registered on NPM have an open-source approved license selected for their project. That is, a license which is in accordance with the open-source philosophy of freely useable, modifiable and shareable code. The list can be found at \href{https://opensource.org/licenses}{the open source initiative organisational website}. Should the exceptional case arise in which a package is used which does not use one of these licenses, it will be explicitly justified and disclosed in its implementation documentation. However, this should technically never arise.
 
+\subsection{User Data Usage and Compliance}
+This study will use the GDPR as a basis of rules to follow in the ethical collection and use of user data. The following subsections will outline the parts of the GDPR deemed relevant to the nature of data used in this study, and perform a risk assessment of where grey areas may occur.
+
+\subsection{Personal Data}
+The app makes no attempt to capture personal data that may make a user identifiable, such as name, age, address, government identification numbers or otherwise. 
