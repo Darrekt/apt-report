@@ -41,10 +41,10 @@ A 1975 study showed that the consumption of a small amount of an addictive subst
 \subsection{Consequences of Distraction}
 Levy and colleagues showed that not only is the occurence of a disturbance a problem, but the "richness" of that disturbance was also detrimental to subjects' performance on cognitive tasks \cite{levy2016effect}.
 
-\subsection{Motivation and Persistence}
+\section{Motivation and Persistence}
 We have seen so far that the outcome of a self-restraint task comes down to whether the strength of bottom-up impulses exceeds that of our top-down intentions. Most of the time, this tends to be the case. Having explored all the ways in which self-control can fail due to how strong our in-built tendencies are, perhaps then there is a way in which we may use these natural tendencies to our advantage, or at least increase the strength of top-down control.
 
-\section{Strengthening Self-control}
+\subsection{Strengthening Self-control}
 % How can one increase their desire and motivation to work on long-term goals?
 Muraven, Baumeister and colleagues conducted a study in which subjects performed consistent amounts of self-enforced exercise over two weeks. While this caused slightly decreased self-control capability on the day, this ``strength drain" diminished rapidly by the day and resulted in increased success in other completely unrelated self-restraint tasks \cite{muraven1999longitudinal}. Muraven took these results again in a later study and found that "smokers who squeezed a handgrip or avoided sweets for two weeks before quitting cigarettes remained abstinent longer and had fewer lapses overall as compared to smokers who practiced tasks that did not require self-control" \cite{muraven2010practicing}. 
 
@@ -54,16 +54,57 @@ These studies, and many others like it, strongly support the previously mentione
 \subsection{Impairing Impulses}
 Cinciripini and colleagues investigated the effects of schedules and gradual consumption reduction in smoking cessation. Participants were all given uniform education on the psychology of nicotine addiction and methods of coping \cite{cinciripini1995effects}. Control over consumption was exercised in two forms: scheduling, where participants were allowed to smoke at designated and progressively lengthened intervals, and reduction, where consumption was reduced by a third of the subject's baseline consumption each week. The scheduled and reduced group unsurprisingly performed best, with the greatest reduction in mean cigarette consumption and reduced frequency of urges and severity of withdrawal symptoms. Reduction alone contributed most to the reduction of urge frequency, and scheduling seemed to have an effect on mean consumption. 
 
-Results from studies such as these suggest that the controlled appeasement of urges may be a key factor in helping to diminish the effects of bottom-up impulses and serve as a basis for productivity schedules such as the pomodoro technique. 
+Results from studies such as these suggest that the controlled appeasement of urges may be a key factor in helping to diminish the effects of bottom-up impulses and serve as a basis for productivity schedules such as the pomodoro technique, which we will explore later as a part of our app design. 
 
 \section{Addictive Design}
-The principles of behavioural science examined so far dictate that a successful well-being app therefore has to not only help the user form healthy habits that help them avoid self-regulation pitfalls, but offer new "hooks" to help to keep their inner chimp from becoming overly restless.
+The principles of behavioural science examined so far dictate that a successful well-being app therefore has to not only help the user form healthy habits that help them avoid self-regulation pitfalls, but offer new "hooks" to help to keep their inner chimp from becoming overly restless. As a first step in this endeavour, we shall study in this section a few detailed (but not exhaustive) examples of how apps create an addictive experience for their users. We will not explore in detail the exact process that results in the successful execution of these addictive designs, but instead focus on relatable examples.
 
-\subsection{Social Media}
-Social media offers novelty at every turn, with variable rewards
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[scale=0.3]{images/hook_model.png}
+    \end{center}
+    \caption{The 4-stage Hook Model.}
+    \label{hook_model}
+\end{figure}
 
-\section{Gaming}
-Gaming, on the other hand, are capable of offering a dense, fast-paced, highly engaging experience.
+This project uses the concepts laid out by Nir Eyal in his book about habit-forming software design, "Hooked" \cite{eyal2014hooked}. He lays out the hook model, which consists of 4 phases: Trigger, Action, Variable reward and Investment.
+
+\subsection{Trigger}
+Bearing the exact same meaning as it does in the case of substance addicts, the trigger is any form of cue exposure that is deliberately aimed at getting the user to perform a desired behaviour. In the world of user interaction studies, we call this a "call-to-action".  Nir broadly separates these into two categories: external and internal triggers.
+
+Anyone who owns a smartphone immediately relates to the concept of an external trigger. A push notification, message, email, or toast-style pop-up within an app all are perfect examples. They bring to our attention a piece of often enticing information, causing us to react. In fact, in the process of trying to make a minimum working example for this project, the wonderful engineers at Google have sent us a perfect example of an external trigger, shown in Figure \ref{fig:firebase_cue}.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[scale=0.3]{images/firebase_cue.png}
+    \end{center}
+    \caption{An external trigger from this very project's cloud service provider.}
+    \label{fig:firebase_cue}
+\end{figure}
+
+The logo at the top immediately reminds us of who we are receiving this email from. A calming light blue panel greets us in the middle of a surrounding of off-white, providing high contrast and yet being easy on the eyes. The message is extremely clear, highlighted within the accessible, high-contrast colour panel and enlarged font.  The detail text in the middle satisfies the more discerning individual, but is almost completely unnecessary, as the panel below it tells the entire story in a beautifully minimalistic fashion. It tells us \textit{exactly} what is happening, to which database, and even provides clearly described high-contrast elements that are clearly interactable, allowing us to take action immediately. Each element in this panel is given its own generous amount of real-estate on the screen, helping the user to hone their focus and drawing attention to the correct elements.
+
+This email is directed at someone deep in the user journey, not even directed at "hooking" new users into the platform. Even then, the amount of attention to detail and incredible design cannot be overstated and achieves its goal perfectly. Through careful planning, Firebase has successfully anticipated the exact courses of action that a user might want to take with regard to this piece of information, and has made it as perfectly painless as possible for the user to actuate it.
+
+Internal triggers are much more subtle, and are the result of an emotional coupling (remember the limbic system!) of a specific thought or feeling with the product. One can argue that the reason for the massive success of addictive apps is that, similar to drugs, they provide a euphoric escape to the otherwise negative emotions that their users face on a daily basis. Childress and colleagues found that hypnotically-induced negative moods such as anxiety and depression produced significant increases in self-rated cravings in detoxified opiate abuse patients \cite{childress1994can}. Similarly, loneliness, anxiety, boredom and depression can be temporarily escaped with the hit of dopamine that the app experience provides (more on this in the section on variable rewards). This conditions an internal trigger in the user: "When I am sad or lonely, talking to friends on Facebook makes me feel less so".
+
+This is the power of the trigger. It is the first step in a continuing feedback loop which motivates or otherwise plant an intent within the user. Triggers may be coordinated and put in place all over the user journey for a variety of different outcomes. 
+
+\subsection{Action}
+Fogg's behaviour model \cite{fogg2009behavior} summarises the mechanisms of user action perfectly: "Behavior (B) happens when Motivation (M), Ability (A), and a Trigger (T) come together at the same moment". To increase the odds of a user performing an action we desire, all three elements must be present, and in sufficient quantity to cross a so-called "decision threshold". 
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[scale=0.3]{images/fogg_behaviour.png}
+    \end{center}
+    \caption{The Fogg Behaviour Model \cite{fogg2009behavior}}
+    \label{fig:fogg_behaviour}
+\end{figure}
+
+Having already covered triggers and how they may be used to spark motivation, this section mainly discusses ability. The example in the previous section is an excellent example of how interactive elements can be carefully placed to make action as easy as possible for the user. This highlights the fact that 
+
+\subsection{Variable Reward}
+\subsection{Investment}
 
 
 \section{The Existing Sage Application}
@@ -72,24 +113,27 @@ After granting the app permissions for notification access in an onboarding sequ
 
 
 \subsection{Limiting issues}
-While the work done so far is an admirable starting effort, there are many potential points of improvement from a user-experience perspective. There are several issues and limiting features with the current implementation of Sage, from both a UX design and software engineering perspective:
+While the work done so far is an admirable starting effort, the concepts explored so far reveal many potential points for improvement. This naturally may have been the result of there only being a single developer at work. This is likely to occur again with this run of the project, and so this section serves as a potential guide for future work in identifying deficiencies in the app's user experience and building upon them. That said, there are several issues and limiting features with the current implementation of Sage, from both a UX design and software engineering perspective which we wish to prioritise in this run of the project:
 
 \underline{Design \& User Experience}
 \begin{itemize}
     \item The selected colour palette is rather dull, with no possible customisation on behalf of the user.
-    \item All the assets and images are static, with no animation or movement to drive user engagement.
+    \item All the assets and images are static, with no animation or movement to make the app "personable" and drive user engagement.
     \item Sizing of interactive elements is not well-standardised, and in most cases are oversized.
+    \item Interface interactions are often not animated, which is not only potentially very jarring for the user, but also may result in a well-known concept known as change blindness, in which a user does not notice that an element of the interface has indeed changed.
 \end{itemize}
 
 \underline{Software Engineering}
 \begin{itemize}
-    \item The notification blocking feature is faulty. Certain edge cases allow notifications to still slip through.
+    \item The notification blocking feature is faulty. The current implementation dismisses the notification using a callback function which is initiated when the notification is fired. This code is asynchronous to the actual firing of the notification, and therefore there exist edge cases in which it can fail.
     \item Currently implemented only as an Android app, no extensibility to iOS, desktop or mobile web users.
     \item Completely local: no data backups or export, no online cloud synchronisation.
+    \item No documented data model for the application, making continued development harder for newly-onboarded engineers.
 \end{itemize}
 
 
 \section{Project (Re-)specification}
+% TODO
 Modern individuals are unable to focus and stay productive for a multitude of reasons. This project seeks to solve that problem by creating a user experience that leverages the concepts explored so far, such that less deliberate exercise of self-discipline is necessary for the user to remain on-task.
 
 % Feasibility study
@@ -101,15 +145,15 @@ As such, some initial research had to be conducted to address the concerns.
 Studying the existing codebase and Android developer documentation
 
 % Requirements Gathering
-As in any other software engineering problem, the first step is to gather an initial list of requirements that will form the specification of what the final product must achieve.
-
-The re-implementation of the Sage application thus should fulfill the following set of requirements in its MVP:
+As in any other software engineering problem, the first step is to gather an initial list of requirements that will form the specification of what the final product must achieve. The re-implementation of the Sage application thus should fulfill the following set of requirements in its MVP:
 
 \underline{Functional Requirements}
 \begin{itemize}
-    \item Re-implement the full feature set of the existing application.
-    \item Fix notification blocking functionality with the use of \textit{Do not Disturb} mode, instead of the current implementation.
-    \item Add online cloud storage and synchronisation of user data.
+    \item Goal and To-do list functionality.
+    \item Focus timer functionality, implementing pomodoro or some other productivity framework.
+    \item Implement notification blocking functionality with the use of \textit{Do not Disturb} mode, instead of the current implementation.
+    \item Offer online cloud storage, identity management and synchronisation of user data.
+    \item Feedback survey built-in to the app and send to an online repository for evaluation.
 \end{itemize}
 
 \underline{Non-functional Requirements}
@@ -124,7 +168,7 @@ The re-implementation of the Sage application thus should fulfill the following 
 \subsection{Software Development Practices}
 An excellent starting point for planning this project is to follow the principles laid out in agile software development. Agility is a concept often used to in business strategy and operation, referring to an organisation's ability to adapt to quickly changing business demands and put themselves in the most competitive position possible. This concept has naturally spread to software development practices and there now exist frameworks for teams to follow such as Scrum, lean software development and Kanban.
 
-% TODO: Picture
+% TODO with picture
 
 
 \subsection{Time Management}
@@ -133,6 +177,7 @@ There are 3 key members in this project team in this interim phase: the part-tim
 
 We therefore structure work into variable 2 or 1-week sprints, taking after agile software development practices instead of a typical waterfall Gantt chart structure. 
 
+% TODO with picture
 Each 
 
 \subsection{Plan of Deliverables}
