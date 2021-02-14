@@ -1,5 +1,5 @@
 \chapter{Engineering Rationale}
-This chapter reviews and justifies the choice of software used in the stack for this project.
+This chapter reviews and justifies the choice of software used in the stack for this project. Most of the decisions have already been made before the time of writing, and so this section mostly serves as documentation for the interested reader.
 
 \section{Cross-Platform Frameworks}
 A long standing problem in the development of mobile applications has been that of having to maintain multiple codebases in order to increase user reach. Especially since different platforms almost always use completely different workflows and programming languages, this means having to employ multiple teams just to maintain separate codebases, leading to features being rolled out on one platform before another, or an inconsistent user experience between both platforms.
@@ -12,7 +12,6 @@ Despite this, cross-platform frameworks have found their niche in helping small 
 Flutter is a recent framework released in 2017 by Google, aiming to provide a set of out-of-the-box interface elements to enable quick development of beautiful user interfaces. As of the time of writing, Flutter has full support for iOS 14, Android 11, macOS, Windows and web \cite{fluttersupportedplatforms}.
 
 However, the primary criticism of Flutter is not only its age, but that it runs in Dart, another language made by Google. This means that not as much libraries and packages for flutter are limited, which means likely having to write much more first-hand code and less stable releases of libraries.
-
 
 \subsection{React Native}
 React Native was released by Facebook in 2014 and continues to be one of the most developed open source projects on Github (alongside Flutter). It builds off of the Model-View-Update architecture originally implemented by React and shares many domain-specific semantics. It runs on JavaScript, which is by a large margin the world's most popular programming language \cite{sfdevsurvey} and therefore has full access to the open-source library distribution channels that it offers. This mean stable support on well-developed and community endorsed packages that enforce a standardised implementation of many common features that developers use.
@@ -35,10 +34,10 @@ The offering of a Cloud-service provider can be thought of as the balance of two
     \label{gcp_compute_offerings}
 \end{figure}
 
-Managed solutions are built on top of the bare-metal philosophy. Cloud service providers may have specific offerings which deliver value to their customers in the form of pre-defined APIs which achieve a commonly desired functionality, such as user authentication. The market-leading solutions often provide a modular product selection that gives a developer a large degree of freedom to build suitable solution. One example of this is Google Cloud, which offers different degrees of control within its compute offerings, ranging from fully managed to completely bare metal.
+Managed solutions are built on top of the bare-metal philosophy. Cloud service providers may have specific offerings which deliver value to their customers in the form of pre-defined APIs which achieve a commonly desired functionality, such as user authentication. The market-leading solutions often provide a modular product selection that gives a developer a large degree of freedom to build suitable solution. One example of this is Google Cloud, which offers different degrees of control within its compute offerings, ranging from fully managed to completely bare metal. Solo-developer projects thus benefit greatly from the conveniences that managed workflows offer, and only employ bare-metal products where the flexibility offered is strictly necessary. In large enterprise teams, the reverse tends to be true, as maximal control over the codebase means less problems with software agility in the long run.
 
 \subsection{Firebase}
-Firebase began as a startup that was later acquired by Google and now stands as one of the most popular backend-as-a-service platforms for developers looking to get small projects off of the ground. Firebase currently offers an unparalleled out-of-the-box offering for implementing safe user authentication, identity management, database and on-demand cloud compute.
+Firebase began as a startup that was later acquired by Google and now stands as one of the most popular backend-as-a-service platforms for developers looking to get small projects off of the ground. Firebase currently offers an unparalleled out-of-the-box offering for implementing safe user authentication, identity management, database, on-demand cloud compute and many more essential features in a single workflow.
 
 \begin{figure}[h]
     \begin{center}
@@ -51,12 +50,12 @@ Firebase began as a startup that was later acquired by Google and now stands as 
 However, all these benefits come at the cost: Firebase is closed-source and has vendor lock-in built into its design. Firebase is much more opinionated than the other back-end solutions that we have explored, in the following ways:
 
 \begin{itemize}
-    \item Databases are accessed directly by clients instead of a back-end endpoint through the Firestore or Realtime Database APIs
-    \item Firebase-provided databases are strictly non-relational.
+    \item Databases are accessed directly by clients instead of a back-end endpoint through the Firestore or Realtime Database APIs. 
+    \item Firebase-provided databases are strictly non-relational (noSQL). Firebase offers no "bare-metal" products for developers to spin up their own databases using other paradigms.
     \item On-demand compute comes in the form of Firebase Cloud Functions, which is designed for small bursts of computation instead of long-running loops. The latter is still possible, but the resulting bill would be unfeasible.
-    \item Cloud Functions currently only supports REST APIs and only supports a limited range of runtime environments \cite{TODO}.
+    \item Cloud Functions currently only supports REST APIs and only supports a limited range of runtime environments.
 \end{itemize}
 
-Despite these, Firebase provides key functionality which may prove extremely valuable in continuing development for this project. Even if not implemented in this run of the project, Firebase offers out-of-the-box solutions for file storage, app crash analytics, search engine optimisation, A/B testing and even (limited) machine learning tasks. Therefore, it is undisputably the platform that will enable the fastest development of a workable product.
+Despite these, Firebase provides key functionality which may prove extremely valuable in continuing development for this project. Even if not implemented in this run of the project, Firebase offers out-of-the-box solutions for file storage, app crash analytics, search engine optimisation, A/B testing and even (limited) machine learning tasks. Therefore, it is undisputably the platform that will enable the fastest development of a workable product for this project.
 
 In summary, the features that it provides will service the needs of future development on this project for a long time to come. Even if it should scale beyond that point, there should be enough resources to facilitate a migration away from Firebase anyway.

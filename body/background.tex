@@ -46,15 +46,15 @@ We have seen so far that the outcome of a self-restraint task comes down to whet
 
 \subsection{Strengthening Self-control}
 % How can one increase their desire and motivation to work on long-term goals?
-Muraven, Baumeister and colleagues conducted a study in which subjects performed consistent amounts of self-enforced exercise over two weeks. While this caused slightly decreased self-control capability on the day, this ``strength drain" diminished rapidly by the day and resulted in increased success in other completely unrelated self-restraint tasks \cite{muraven1999longitudinal}. Muraven took these results again in a later study and found that "smokers who squeezed a handgrip or avoided sweets for two weeks before quitting cigarettes remained abstinent longer and had fewer lapses overall as compared to smokers who practiced tasks that did not require self-control" \cite{muraven2010practicing}. 
+Muraven, Baumeister and colleagues conducted a study in which subjects performed consistent amounts of self-enforced exercise over two weeks. While this caused slightly decreased self-control capability on the day, this ``strength drain" diminished rapidly by the day and resulted in increased success in other completely unrelated self-restraint tasks \cite{muraven1999longitudinal}. Muraven took these results again in a later study and found that "smokers who squeezed a handgrip or avoided sweets for two weeks before quitting cigarettes remained abstinent longer and had fewer lapses overall as compared to smokers who practiced tasks that did not require self-control" \cite{muraven2010practicing}.
 
 % Is there any way to convince the chimp to want to do work?
 These studies, and many others like it, strongly support the previously mentioned strength model of self-control. Metaphorically, self-control behaves very much like a muscle: its capabilities are slight diminished following immediate use and while it is possible to fatigue it significantly, it is also possible to increase its capabilities with consistent amounts of progressive load.
 
 \subsection{Impairing Impulses}
-Cinciripini and colleagues investigated the effects of schedules and gradual consumption reduction in smoking cessation. Participants were all given uniform education on the psychology of nicotine addiction and methods of coping \cite{cinciripini1995effects}. Control over consumption was exercised in two forms: scheduling, where participants were allowed to smoke at designated and progressively lengthened intervals, and reduction, where consumption was reduced by a third of the subject's baseline consumption each week. The scheduled and reduced group unsurprisingly performed best, with the greatest reduction in mean cigarette consumption and reduced frequency of urges and severity of withdrawal symptoms. Reduction alone contributed most to the reduction of urge frequency, and scheduling seemed to have an effect on mean consumption. 
+Cinciripini and colleagues investigated the effects of schedules and gradual consumption reduction in smoking cessation. Participants were all given uniform education on the psychology of nicotine addiction and methods of coping \cite{cinciripini1995effects}. Control over consumption was exercised in two forms: scheduling, where participants were allowed to smoke at designated and progressively lengthened intervals, and reduction, where consumption was reduced by a third of the subject's baseline consumption each week. The scheduled and reduced group unsurprisingly performed best, with the greatest reduction in mean cigarette consumption and reduced frequency of urges and severity of withdrawal symptoms. Reduction alone contributed most to the reduction of urge frequency, and scheduling seemed to have an effect on mean consumption.
 
-Results from studies such as these suggest that the controlled appeasement of urges may be a key factor in helping to diminish the effects of bottom-up impulses and serve as a basis for productivity schedules such as the pomodoro technique, which we will explore later as a part of our app design. 
+Results from studies such as these suggest that the controlled appeasement of urges may be a key factor in helping to diminish the effects of bottom-up impulses and serve as a basis for productivity schedules such as the pomodoro technique, which we will explore later as a part of our app design.
 
 \section{Addictive Design}
 The principles of behavioural science examined so far dictate that a successful well-being app therefore has to not only help the user form healthy habits that help them avoid self-regulation pitfalls, but offer new "hooks" to help to keep their inner chimp from becoming overly restless. As a first step in this endeavour, we shall study in this section a few detailed (but not exhaustive) examples of how apps create an addictive experience for their users. We will not explore in detail the exact process that results in the successful execution of these addictive designs, but instead focus on relatable examples.
@@ -88,29 +88,72 @@ This email is directed at someone deep in the user journey, not even directed at
 
 Internal triggers are much more subtle, and are the result of an emotional coupling (remember the limbic system!) of a specific thought or feeling with the product. One can argue that the reason for the massive success of addictive apps is that, similar to drugs, they provide a euphoric escape to the otherwise negative emotions that their users face on a daily basis. Childress and colleagues found that hypnotically-induced negative moods such as anxiety and depression produced significant increases in self-rated cravings in detoxified opiate abuse patients \cite{childress1994can}. Similarly, loneliness, anxiety, boredom and depression can be temporarily escaped with the hit of dopamine that the app experience provides (more on this in the section on variable rewards). This conditions an internal trigger in the user: "When I am sad or lonely, talking to friends on Facebook makes me feel less so".
 
-This is the power of the trigger. It is the first step in a continuing feedback loop which motivates or otherwise plant an intent within the user. Triggers may be coordinated and put in place all over the user journey for a variety of different outcomes. 
+This is the power of the trigger. It is the first step in a continuing feedback loop which motivates or otherwise plant an intent within the user. Triggers may be coordinated and put in place all over the user journey for a variety of different outcomes.
 
 \subsection{Action}
-Fogg's behaviour model \cite{fogg2009behavior} summarises the mechanisms of user action perfectly: "Behavior (B) happens when Motivation (M), Ability (A), and a Trigger (T) come together at the same moment". To increase the odds of a user performing an action we desire, all three elements must be present, and in sufficient quantity to cross a so-called "decision threshold". 
+Fogg's behaviour model \cite{fogg2009behavior} summarises the mechanisms of user action elegantly: "Behavior (B) happens when Motivation (M), Ability (A), and a Trigger (T) come together at the same moment". To increase the odds of a user performing an action we desire, all three elements must be present, and in sufficient quantity to cross a so-called "decision threshold".
 
 \begin{figure}[h]
     \begin{center}
         \includegraphics[scale=0.3]{images/fogg_behaviour.png}
     \end{center}
-    \caption{The Fogg Behaviour Model \cite{fogg2009behavior}}
+    \caption{The Fogg Behaviour Model as illustrated in the original paper.}
     \label{fig:fogg_behaviour}
 \end{figure}
 
-Having already covered triggers and how they may be used to spark motivation, this section mainly discusses ability. The example in the previous section is an excellent example of how interactive elements can be carefully placed to make action as easy as possible for the user. This highlights the fact that 
+Having already covered triggers and how they may be used to spark motivation, this section mainly discusses ability. The example in the previous section is an excellent example of how interactive elements can be carefully placed to make action as easy as possible for the user. This highlights the fact that motivation and ability can trade off, as a highly motivated user may be willing to go through more work in order to achieve a desired outcome. Ease of use is much more within developers' control than user motivations and intentions. If a developer can design the interaction such that all the "simplicity factors" expended (in figure \ref{hook_model}) are minimised on behalf of the user, the product feels intuitive and can simply act on instinct rather than constantly depleting precious reserves of conscious thought.
+
+A quick moment of reflection will reveal that many of the features that we consider to be excellent are the ones that do precisely this. The widely adopted "Sign up with Facebook" feature completely removes the barrier of entry that new users usually have to go through to access a site. Most modern smartphones have access to their cameras without requiring an explicit unlock. E-commerce retailers often allow users to subscribe to email updates to know when a specific product is back in stock. The list goes on and is endless, but it is clear that usability is a key factor in app design, allowing users to spend increased amounts of time in a given app without feeling the strain of prolonged cognitive effort or other resources.
 
 \subsection{Variable Reward}
-\subsection{Investment}
+We have known since the times of Pavlovian conditioning that reward conditions a learned response in animals. Science has since then come a long way in helping us understand the mechanisms responsible for motivated action in humans and animals. The neurotransmitter responsible in many of these motivating behaviours is Dopamine. Dopamine travels through various parts of the brain through well-known pathways, and each of these pathways is responsible for feelings of pleasure and reward such as during sexual intercourse and eating food (particularly foods high in sugar).
 
+However, dopamine is not only released upon the actual experience of a positive experience, but in anticipation of one. A study by Salimpoor and colleagues conducted a study on dopamine release and music that also showed that contrary to belief at the time, dopamine was released distinctly different pathways at two moments: in anticipation of a moment of peak emotional arousal, and during the actual moment itself \cite{salimpoor2011anatomically}. One of Schultz's many extensive works on dopamine-reward mechanics also builds upon long-standing models in neuroscience that show that the brain actually uses dopamine to learn emotional responses by matching the anticipatory and actual response upon receiving the reward \cite{schultz2016dopamine}. Schultz showed that the dopamine neurons showed the greatest activity when the received reward exceeded what was anticipated, therefore resulting in the greatest learned behaviour.
+
+Variable rewards exploit this in one of two ways: either providing a reward when one was not expected, or by having a low-calibrated expected reward and providing a much larger one (eventually). The effect of this variability has been shown to be extreme. The classic experiment conducted on mice by Olds and Milner connected electrodes directly to the pleasure center in test mice and placed them in a chamber where they could press a button to stimulate themselves. When the reward was made variable (given after a random number of button presses), mice lost interest not only in food and drink, but even reproduction \cite{olds1954positive}. A later study confirmed with fMRI scans that humans had higher brain stimulation levels when the potential reward was variable, and not predictable \cite{berns2001predictability}.
+
+Taking this knowledge in the context of primitive human biology, Nir describes that rewards fall into three general categories: the tribe, the hunt and the self \cite{eyal2014hooked}. Simply put, humans crave rewards from social acceptance, reward-for-effort and self-accomplishment and improvement, respectively. One does not have to be a genius to see how these exist in the design of social media apps. Facebook and Instagram give users social acceptance in the form of statistics on their content, such as the number of "likes" from friends, and even have social interaction built in to features such as comments and in-app messengers. Such updates happen completely randomly from the perspective of the user, as they are actuated by other users. It is therefore very common for social media app users to feverishly open the app, even when no explicit notification has been received. Even if no direct response from a friend was expected, apps still employ machine learning algorithms to place a tailored content feed in front of the user when they open the app, providing a reward even when none was expected. Over time, this results in a conditioned response of opening the app in expectation of some unknown abstract reward, and an internal trigger is formed that tethers the mere opening of the app to a positive, rewarding experience.
+
+\subsection{Investment}
+The final phase of the 4-step hook model requires the user to perform an investment in the product. This is not necessarily monetary, but rather refers to the user placing some form of effort into the system. This is slightly contrary to the principles of action mentioned before, in which effort on behalf of the user was minimised. In order to get users to willingly put in this investment, it is usually prompted after the user has received a variable reward. This, according to Eyal, plays on the human tendency to reciprocate to kindness \cite{eyal2014hooked}. Other motivating factors for a user to contribute may be similarly built up by the app. Humans enjoy consistency with past behaviours and dislike cognitive dissonance, where one's actions may be in conflict with one's beliefs. We will see in the following example how these can be exploited.
+
+Investment can come in many forms, and often apps find a way to make users feel a sense of ownership over their investment, even if it offered no direct benefit to them. Many of the most successful apps have some form of recommender system within them. Google Maps, for example, is essentially a large geographical recommender for a user's desires. Apart from its explicit use as a navigation tool, it allows the semantic search of locations, such as when one types "Japanese restaurant" or "hairdresser". Clearly, Google does not deploy an army of employees to log each and every establishment in the world. Google Maps is only as good as the data it collects, which comes from its users!
+
+For those who are unfamiliar, Google Maps offers a comprehensive navigation experience to a location of your choice. If we were to use it to get to a restaurant for a date, Google would later leave us a notification that brings us to the "contribute" screen of the app:
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[scale=0.3]{images/fogg_behaviour.png}
+    \end{center}
+    \caption{The Fogg Behaviour Model as illustrated in the original paper.}
+    \label{fig:fogg_behaviour}
+\end{figure}
+
+This is a precise example which highlights the concepts above. Having received the benefit of the wonderful navigation services Google kindly offered (for free!), the user is now given a chance to "help others know what to expect". The request is made after having received some benefit, and offers the user a chance to not only reciprocate in kind to the app, but to perform an action that identifies them as a helpful member of the community (which, for most people, lines up with the image they would want to have of themselves).
+
+The review process is exceedingly simple. Users may go out of their way to write an open-ended review with pictures of the establishment, or simply answer a set of pre-determined questions that Google has set. In either case, the user is thanked with colourful confetti explosions upon completion, and the following screen is shown.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[scale=0.3]{images/fogg_behaviour.png}
+    \end{center}
+    \caption{The Fogg Behaviour Model as illustrated in the original paper.}
+    \label{fig:fogg_behaviour}
+\end{figure}
+
+This brings to mind another concept: ownership and gamification. Much like classic role-playing games such as World of Warcraft, the user builds up a profile of "achievements" by contributing to the app, and their efforts are celebrated with colourful badges and titles. The user is now not only increasingly attached to the product, but actively takes pride in helping to improve it on behalf of the developers.
+
+\subsection{Concluding Statements on Addictive Design}
+It is concerning that terms such as "habit-forming products" have been thrown around so freely and only ethically questioned in the past few years. Admittedly, none of these concepts are insidious in and of themselves. One would argue that Google Maps, despite starring in these examples, has largely been an extremely beneficial product for modern society (Not many people suffer from addiction to Google Maps). However, it is clear that larger social media apps have iterated many times upon their original product and achieved a very successful application of these principles in their software design. Large amounts of money are dedicated to User Experience research in universities and internal departments in modern companies in pursuit of furthering the art of product design.
+
+Ethics aside, one cannot expect a corporation not to take every action possible to optimise its revenues. To date, no legislation exists to govern the principles of addictive software design, and we argue that it would be very difficult to do so even if lawmakers wanted to do something about it. The best solution in the interim would be for this information to be widely available such that users at least are made conscious of how apps on their phones may be driving their unconscious behaviours.
 
 \section{The Existing Sage Application}
-\subsection{Functional overview}
-After granting the app permissions for notification access in an onboarding sequence, the app starts up and offers its core functionality: a task list. Users may create and edit tasks. Each task may be recurring daily, and may block notifications. Users may then at any time start working on a task, triggering a running timer which may block all incoming notifications while active. A task can be completed, or returned to any time later with a break. All this activity is stored within the client and can be displayed to the user through graphs as a form of feedback on their productivity.
+Having now briefly covered the mechanics of human attention and addictive app design, a critical inspection of the current platform is necessary in order to determine the ways in which we might go about improving it.
 
+\subsection{Functional overview}
+% TODO: Images
+After granting the app permissions for notification access in an onboarding sequence, the app starts up and offers its core functionality: a task list. Users may create and edit tasks. Each task may be recurring daily, and may block notifications. Users may then at any time start working on a task, triggering a running timer which may block all incoming notifications while active. A task can be completed, or returned to any time later with a break. All this activity is stored within the client and can be displayed to the user through graphs as a form of feedback on their productivity.
 
 \subsection{Limiting issues}
 While the work done so far is an admirable starting effort, the concepts explored so far reveal many potential points for improvement. This naturally may have been the result of there only being a single developer at work. This is likely to occur again with this run of the project, and so this section serves as a potential guide for future work in identifying deficiencies in the app's user experience and building upon them. That said, there are several issues and limiting features with the current implementation of Sage, from both a UX design and software engineering perspective which we wish to prioritise in this run of the project:
@@ -121,6 +164,7 @@ While the work done so far is an admirable starting effort, the concepts explore
     \item All the assets and images are static, with no animation or movement to make the app "personable" and drive user engagement.
     \item Sizing of interactive elements is not well-standardised, and in most cases are oversized.
     \item Interface interactions are often not animated, which is not only potentially very jarring for the user, but also may result in a well-known concept known as change blindness, in which a user does not notice that an element of the interface has indeed changed.
+    \item The app is purely mobile, so the user has to be in the presence of a distracting device.
 \end{itemize}
 
 \underline{Software Engineering}
@@ -133,56 +177,44 @@ While the work done so far is an admirable starting effort, the concepts explore
 
 
 \section{Project (Re-)specification}
-% TODO
-Modern individuals are unable to focus and stay productive for a multitude of reasons. This project seeks to solve that problem by creating a user experience that leverages the concepts explored so far, such that less deliberate exercise of self-discipline is necessary for the user to remain on-task.
-
-% Feasibility study
-Proposing a re-implementation software project naturally begs the following questions:
-- What advantages will the effort yield, and is it worth the effort?
-- Will it perform as before, or are there be any compromises as a result of the move?
-
-As such, some initial research had to be conducted to address the concerns.
-Studying the existing codebase and Android developer documentation
-
-% Requirements Gathering
-As in any other software engineering problem, the first step is to gather an initial list of requirements that will form the specification of what the final product must achieve. The re-implementation of the Sage application thus should fulfill the following set of requirements in its MVP:
+This project seeks to create a user experience that leverages the concepts explored so far, such that less deliberate exercise of self-discipline is necessary for the user to remain focused while working. As in any other software engineering problem, the first step is to gather an initial list of requirements that will form the specification of what the final product must achieve. The re-implementation of the Sage application aims to complete with the following set of features:
 
 \underline{Functional Requirements}
 \begin{itemize}
     \item Goal and To-do list functionality.
     \item Focus timer functionality, implementing pomodoro or some other productivity framework.
+    \item Improve the current self-feedback system. The current statistics offered to the user are not visualised in a meaningful way over time, and some of them feel like they might not even be helpful.
     \item Implement notification blocking functionality with the use of \textit{Do not Disturb} mode, instead of the current implementation.
     \item Offer online cloud storage, identity management and synchronisation of user data.
     \item Feedback survey built-in to the app and send to an online repository for evaluation.
+    \item Offer an in-app educational experience on the mechanics of attention and addictive app design.
+    \item Offer a consistent app experience across mobile and web, so that users do not have to be in the presence of any one particular distracting device.
 \end{itemize}
 
 \underline{Non-functional Requirements}
 \begin{itemize}
     \item Must be performant without excessive jank, jitter or loading delay.
     \item In the event of a crash, the application should recover gracefully and inform the user of any inconsistencies in their data caused by the crash (interrupting a focus period, etc).
+    \item The application should be fully GDPR compliant and users should have a large degree of awareness and control over their data and how it is collected.
 \end{itemize}
 
+Some further stretch goals include other features like an in-app social experience, but these ideas are still pending feasibility evaluation from a behavioural perspective and will be documented at the time of implementation, if applicable.
 
 \section{Implementation Plan}
-% What is agile software development
 \subsection{Software Development Practices}
 An excellent starting point for planning this project is to follow the principles laid out in agile software development. Agility is a concept often used to in business strategy and operation, referring to an organisation's ability to adapt to quickly changing business demands and put themselves in the most competitive position possible. This concept has naturally spread to software development practices and there now exist frameworks for teams to follow such as Scrum, lean software development and Kanban.
 
 % TODO with picture
 
+Simply put, Agile development seeks to solve the problems which top-down uni-directional software development (called "waterfall") failed to address. It incorporates feedback-driven revision into the development process which allows quick pivoting based on all manner of contingent circumstances such as changing requirements, fickle clients and unforeseen roadblocks. The client is involved as an active member the developent process and does not end up with a potentially nasty surprise at the end.
 
-\subsection{Time Management}
-% Motivation for developing features iteratively
+
+\subsection{Time Management and Plan of Deliverables}
 There are 3 key members in this project team in this interim phase: the part-time solo developer, the supervisor and a consultant who doubles as the client. Given the timing and nature of term-time work, the structure of development cycles must be flexible to accomodate for unforeseen workload variance on behalf of the developer or consultant. Core members are only available on a part-time basis until the summer term,
 
-We therefore structure work into variable 2 or 1-week sprints, taking after agile software development practices instead of a typical waterfall Gantt chart structure. 
+We therefore structure work into variable 2 or 1-week sprints, taking after agile software development practices instead of a typical waterfall Gantt chart structure. Each sprint will begin with a meeting with all 3 members, consisting of a progress update of work done in the previous week and review of improvement points. Important points of critique will be added to the backlog of they are actionable. A selection of tasks will then be selected from the backlog to serve as the priorities for the upcoming sprint, based on developer bandwidth for the week. Until full-time development in the Summer term, we expect to mostly develop minimum-working examples of each feature to show that they work and are implementable.
 
-% TODO with picture
-Each 
-
-\subsection{Plan of Deliverables}
-% Rough timeline, release plan and feature map
-
+Ideally, if manpower and time constraints could be ignored, the project would require a front-end UX developer, a back-end and database engineer, an asset designer and a product manager in order to correctly execute the development of an app that correctly applies the principles of addictive app design. Unfortunately, the former 3 roles are squashed onto a single developer. This report will thus fully document in later sections the actions taken to account for this shortage and the compromised features that may have had to be pushed onto the backlog in favour of developing more urgent features.
 
 \section{Evaluation Plan}
 % Proposed evaluation metrics
