@@ -1,7 +1,7 @@
 \chapter{Project Planning}
 
 \section{Project Respecification}
-This project seeks to create a user experience that leverages the concepts explored so far, such that less deliberate exercise of self-discipline is necessary for the user to remain focused while working. As in any other software engineering problem, the first step is to gather an initial list of requirements that will form the specification of what the final product must achieve. The re-implementation of the Sage application aims to complete with the following set of features:
+This project seeks to create a user experience that leverages the concepts explored so far, such that minimal deliberate exercise of self-discipline is necessary for the user to remain focused while working. As in any other software engineering problem, the first step is to gather an initial list of requirements that will form the specification of what the final product must achieve. The re-implementation of the Sage application aims to complete with the following set of features:
 
 \underline{Functional Requirements}
 \begin{itemize}
@@ -37,9 +37,9 @@ An excellent starting point for planning this project is to follow the principle
     \label{fig:agile_flow}
 \end{figure}
 
-Simply put, Agile development seeks to solve the problems which top-down uni-directional software development (called "waterfall") failed to address. It incorporates feedback-driven revision into the development process which allows quick pivoting based on all manner of contingent circumstances such as changing requirements, fickle clients and unforeseen roadblocks. The client is involved as an active member the developent process and does not end up with a potentially nasty surprise at the end.
+Simply put, Agile development seeks to solve the problems which bottom-up uni-directional software development (called "waterfall") failed to address. It incorporates feedback-driven revision into the development process which allows quick pivoting based on all manner of contingent circumstances such as changing requirements, fickle clients and unforeseen roadblocks. The client is involved as an active member the developent process and does not end up with a potentially nasty surprise at the end.
 
-\subsection{Time Management}
+\subsection{Time Management and Limiting Factors}
 There are 3 key members in this project team in this interim phase: the part-time solo developer, the supervisor and a consultant who doubles as the client. Given the timing and nature of term-time work, the structure of development cycles must be flexible to accomodate for unforeseen workload variance on behalf of the developer or consultant. Core members are only available on a part-time basis until the summer term,
 
 We therefore structure work into variable 2 or 1-week sprints, taking after agile software development practices instead of a typical waterfall Gantt chart structure. Each sprint will begin with a meeting with all 3 members, consisting of a progress update of work done in the previous week and review of improvement points. Important points of critique will be added to the backlog of they are actionable. A selection of tasks will then be selected from the backlog to serve as the priorities for the upcoming sprint, based on developer bandwidth for the week. Until full-time development in the Summer term, we expect to mostly develop minimum-working examples of each feature to show that they work and are implementable.
@@ -115,9 +115,7 @@ For this study, the concerns are not to develop the world's best-selling product
 The app will be released to students in Imperial College London through the Android and iOS distribution channels, with its intentions clearly stated in both publicity efforts and as part of the in-app onboarding process. We hope to complete development on the alpha release in time for the Easter holiday, when students will be focusing on studying for exams.
 
 \section{Ethical, Legal and Safety Plan}
-This project has no actionable safety concerns, since there is no physical product in which the user might harm themselves with. The primary concerns are with the use of third-party intellectual property and the safe and compliant use of user data for analytics and product improvement.
-
-\subsection{Ethical Use of Habit-forming Design}
+This project has no actionable safety concerns, since there is no physical product in which the user might harm themselves with. The primary concerns are with the use of third-party intellectual property and the safe and ethical use of user data for analytics and product improvement.
 
 \subsection{Software Licensing}
 This project will leverage the use of open-source software libraries and frameworks, the largest example of which is React Native. Open-source, by definition, allows the unrestricted redistribution and modification of a given piece of software for any purpose. As a secondary precaution, all packages used will be derived from the Node Package Manager (NPM) registry, which effectively serves as a central distribution point of open source packages pertaining to the javascript ecosystem (in which this project resides).
@@ -137,4 +135,5 @@ In the interest of brevity, the GDPR checklist can be found \href{https://gdpr.e
     \item Users may at any time erase all their usage data within the settings menu.
 \end{itemize}
 
-% TODO: Add a summary
+\section{Concluding Remarks}
+A full implementation plan has been developed. However, the primary cause concern for this project is the shortage of developer manpower. Successful social media apps are usually developed across large enterprise teams, each of which "owns" a specific part of the product. Even then, a polished product typically emerges only after many cycles of product iteration. A realistic goal for this project is therefore to implement an excellent product to the best of our ability and have infrastructure in place to guide future development and iteration. Such infrastructure is thankfully available out-of-the-box from Firebase.
