@@ -45,7 +45,7 @@ Both Android and iOS have robust application programming interfaces (APIs) that 
 Cue exposure need not even be as explicit as a push notification. The experience of using a social media app or playing a game is extremely pleasurable. Beautiful colour palettes, high-resolution artwork and buttery-smooth animations are a staple in successful apps. All these factors enable the "chimp" to register a positive emotional response to act of phone use. Therefore, the very presence of the phone is a form of cue exposure that constantly forces the user to exercise self-restraint.
 
 \subsection{Lapse-activated Consumption}
-A 1975 study showed that the consumption of a small amount of an addictive substance (in this case, a milkshake on a test audience of dieters) paradoxically caused dieters to consume more food afterwards, in contrast to the control group of non-dieters who ate less \cite{herman1975restrained}. 
+A 1975 study showed that the consumption of a small amount of an addictive substance (in this case, a milkshake on a test audience of dieters) paradoxically caused dieters to consume more food afterwards, in contrast to the control group of non-dieters who ate less \cite{herman1975restrained}.
 
 Picking up one's phone for a short break from work can often snowball into a longer-than-intended session of scrolling social media. Playing "just one round" of a game often ends up being anything but. Apps offer extremely dense experiences that engage visual, auditory and even kinesthetic senses that are highly appealing to our physiologies. Levy and colleagues showed that not only is the occurence of a disturbance a problem, but the "richness" of that disturbance was also detrimental to subjects' performance on cognitive tasks \cite{levy2016effect}. This explains the unconscious effect that distraction has, and why people find it difficult to go back to work once they have been distracted by a form of smartphone media.
 
@@ -129,31 +129,52 @@ The final phase of the 4-step hook model requires the user to perform an investm
 
 Investment can come in many forms, and often apps find a way to make users feel a sense of ownership over their investment, even if it offered no direct benefit to them. Many of the most successful apps have some form of recommender system within them. Google Maps, for example, is essentially a large geographical recommender for a user's desires. Apart from its explicit use as a navigation tool, it allows the semantic search of locations, such as when one types "Japanese restaurant" or "hairdresser". Clearly, Google does not deploy an army of employees to log each and every establishment in the world. Google Maps is only as good as the data it collects, which comes from its users!
 
-For those who are unfamiliar, Google Maps offers a comprehensive navigation experience to a location of your choice. If we were to use it to get to a restaurant for a date, Google would later leave us a notification that brings us to the "contribute" screen of the app:
+For those who are unfamiliar, Google Maps offers a comprehensive navigation experience to a location of your choice. If we were to use it to get to a restaurant for a date, Google would later leave us a notification that brings us to the "contribute" screen of the app, pictured in \ref{fig:gmaps_contrib_home}.
 
-\begin{figure}[h]
+\begin{figure}[htb!]
     \begin{center}
-        \fbox{\rule{0pt}{1.2in} \rule{0.99\linewidth}{0pt}}
-        %   \includegraphics[width=0.8\linewidth]{egfigure.pdf}
+        \begin{subfigure}{.3\textwidth}
+            \centering
+            \includegraphics[width=0.8\linewidth]{images/gmaps_contribute.jpg}
+            \caption{The home page.}
+            \label{fig:gmaps_contrib_home}
+        \end{subfigure}%
+        \begin{subfigure}{.3\textwidth}
+            \centering
+            \includegraphics[width=0.8\linewidth]{images/gmaps_contribute_survey.jpg}
+            \caption{A survey question about a given establishment.}
+            \label{fig:gmaps_contrib_survey}
+        \end{subfigure}%
+        \caption{The "Contribute" Section of the Google Maps App.}
+        \label{fig:gmaps_contribute}
     \end{center}
-    \caption{The "Contribute" Section of the Google Maps App.}
-    \label{fig:gmaps_contribute}
 \end{figure}
 
-This is a precise example which highlights the concepts above. Having received the benefit of the wonderful navigation services Google kindly offered (for free!), the user is now given a chance to "help others know what to expect". The request is made after having received some benefit, and offers the user a chance to not only reciprocate in kind to the app, but to perform an action that identifies them as a helpful member of the community (which, for most people, lines up with the image they would want to have of themselves).
 
-The review process is exceedingly simple. Users may go out of their way to write an open-ended review with pictures of the establishment, or simply answer a set of pre-determined questions that Google has set. In either case, the user is thanked with colourful confetti explosions upon completion, and the following screen is shown.
+This is a precise example which highlights the concepts of user investment. Having received the benefit of the wonderful navigation services Google kindly offered (for free!), the user is now given a chance to "help others know what to expect". The request is made after having received some benefit, and offers the user a chance to not only reciprocate in kind to the app, but to perform an action that identifies them as a helpful member of the community (which, for most people, lines up with the image they would want to have of themselves).
 
-\begin{figure}[h]
+The review process is exceedingly simple. Users may go out of their way to write an open-ended review with pictures of the establishment, or simply answer a set of pre-determined questions that Google has set, all not requiring open-ended answers (Figure \ref{fig:gmaps_contrib_survey}). In either case, the user is thanked with colourful confetti explosions upon completion, and the congratulatory screen is shown (Figure \ref{fig:gmaps_gamify_congrat}).
+
+\begin{figure}[htb!]
     \begin{center}
-        \fbox{\rule{0pt}{1.2in} \rule{0.99\linewidth}{0pt}}
-        %   \includegraphics[width=0.8\linewidth]{egfigure.pdf}
+        \begin{subfigure}{.3\textwidth}
+            \centering
+            \includegraphics[width=0.8\linewidth]{images/gmaps_gamified_home.jpg}
+            \caption{Google Maps contributor profile}
+            \label{fig:gmaps_gamify_home}
+        \end{subfigure}%
+        \begin{subfigure}{.3\textwidth}
+            \centering
+            \includegraphics[width=0.8\linewidth]{images/gmaps_gamified_complete.jpg}
+            \caption{A congratulatory message upon contributing.}
+            \label{fig:gmaps_gamify_congrat}
+        \end{subfigure}%
+        \caption{The gamification of user contribution.}
+        \label{fig:gmaps_gamification}
     \end{center}
-    \caption{The screen shown upon a successful contribution.}
-    \label{fig:gmaps_contrib_finish}
 \end{figure}
 
-This brings to mind another concept: ownership and gamification. Much like classic role-playing games such as World of Warcraft, the user builds up a profile of "achievements" by contributing to the app, and their efforts are celebrated with colourful badges and titles. The user is now not only increasingly attached to the product, but actively takes pride in helping to improve it on behalf of the developers.
+This brings to mind another concept: ownership and gamification. Much like classic role-playing games such as World of Warcraft, the user builds up a profile of "achievements" by contributing to the app, and their efforts are celebrated with colourful badges and titles (Figure \ref{fig:gmaps_gamify_home}). The user is now not only increasingly attached to the product, but actively takes pride in helping to improve it on behalf of the developers.
 
 \subsection{Concluding Statements on Addictive Design}
 It is concerning that terms such as "habit-forming products" have been thrown around so freely and only ethically questioned in the past few years. Admittedly, none of these concepts are insidious in and of themselves. One would argue that Google Maps, despite starring in these examples, has largely been an extremely beneficial product for modern society (Not many people suffer from addiction to Google Maps). However, it is clear that larger social media apps have iterated many times upon their original product and achieved a very successful application of these principles in their software design. Large amounts of money are dedicated to User Experience research in universities and internal departments in modern companies in pursuit of furthering the art of product design.
