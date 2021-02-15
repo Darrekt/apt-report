@@ -6,6 +6,15 @@ With the goals and objectives of the project clearly laid out, it is now necessa
 To develop an app to fix the problem of attention deficiency, a short exploration into the mechanics of attention preservation is necessary.
 Within this scope, our focus will be on two different parts of the brain: the limbic system and the prefrontal cortex.
 
+\begin{figure}[h]
+    \begin{center}
+        \fbox{\rule{0pt}{1.2in} \rule{0.99\linewidth}{0pt}}
+        %   \includegraphics[width=0.8\linewidth]{egfigure.pdf}
+    \end{center}
+    \caption{A Simplified Model for Motivated Action}
+    \label{fig:1}
+\end{figure}
+
 \subsection{The Limbic System}
 The Limbic System carries out many functions that are considered "primal urges". Emotional responses to food, smell, social cognition, emotional memory, sexual behaviour and most importantly for this context, addiction and motivation \cite{rajmohan2007limbic}. All these functions can be summarised and grouped by one common concern: self and species preservation.
 
@@ -123,10 +132,11 @@ For those who are unfamiliar, Google Maps offers a comprehensive navigation expe
 
 \begin{figure}[h]
     \begin{center}
-        \includegraphics[scale=0.3]{images/fogg_behaviour.png}
+        \fbox{\rule{0pt}{1.2in} \rule{0.99\linewidth}{0pt}}
+        %   \includegraphics[width=0.8\linewidth]{egfigure.pdf}
     \end{center}
-    \caption{The Fogg Behaviour Model as illustrated in the original paper.}
-    \label{fig:fogg_behaviour}
+    \caption{The "Contribute" Section of the Google Maps App.}
+    \label{fig:gmaps_contribute}
 \end{figure}
 
 This is a precise example which highlights the concepts above. Having received the benefit of the wonderful navigation services Google kindly offered (for free!), the user is now given a chance to "help others know what to expect". The request is made after having received some benefit, and offers the user a chance to not only reciprocate in kind to the app, but to perform an action that identifies them as a helpful member of the community (which, for most people, lines up with the image they would want to have of themselves).
@@ -135,10 +145,11 @@ The review process is exceedingly simple. Users may go out of their way to write
 
 \begin{figure}[h]
     \begin{center}
-        \includegraphics[scale=0.3]{images/fogg_behaviour.png}
+        \fbox{\rule{0pt}{1.2in} \rule{0.99\linewidth}{0pt}}
+        %   \includegraphics[width=0.8\linewidth]{egfigure.pdf}
     \end{center}
-    \caption{The Fogg Behaviour Model as illustrated in the original paper.}
-    \label{fig:fogg_behaviour}
+    \caption{The screen shown upon a successful contribution.}
+    \label{fig:gmaps_contrib_finish}
 \end{figure}
 
 This brings to mind another concept: ownership and gamification. Much like classic role-playing games such as World of Warcraft, the user builds up a profile of "achievements" by contributing to the app, and their efforts are celebrated with colourful badges and titles. The user is now not only increasingly attached to the product, but actively takes pride in helping to improve it on behalf of the developers.
@@ -153,6 +164,15 @@ Having now briefly covered the mechanics of human attention and addictive app de
 
 \subsection{Functional overview}
 % TODO: Images
+\begin{figure}[h]
+    \begin{center}
+        \fbox{\rule{0pt}{1.2in} \rule{0.99\linewidth}{0pt}}
+        %   \includegraphics[width=0.8\linewidth]{egfigure.pdf}
+    \end{center}
+    \caption{The Home Screen of the Sage app.}
+    \label{fig:sage_home_old}
+\end{figure}
+
 After granting the app permissions for notification access in an onboarding sequence, the app starts up and offers its core functionality: a task list. Users may create and edit tasks. Each task may be recurring daily, and may block notifications. Users may then at any time start working on a task, triggering a running timer which may block all incoming notifications while active. A task can be completed, or returned to any time later with a break. All this activity is stored within the client and can be displayed to the user through graphs as a form of feedback on their productivity.
 
 \subsection{Limiting issues}
@@ -176,7 +196,7 @@ While the work done so far is an admirable starting effort, the concepts explore
 \end{itemize}
 
 
-\section{Project (Re-)specification}
+\section{Project Respecification}
 This project seeks to create a user experience that leverages the concepts explored so far, such that less deliberate exercise of self-discipline is necessary for the user to remain focused while working. As in any other software engineering problem, the first step is to gather an initial list of requirements that will form the specification of what the final product must achieve. The re-implementation of the Sage application aims to complete with the following set of features:
 
 \underline{Functional Requirements}
@@ -200,11 +220,19 @@ This project seeks to create a user experience that leverages the concepts explo
 
 Some further stretch goals include other features like an in-app social experience, but these ideas are still pending feasibility evaluation from a behavioural perspective and will be documented at the time of implementation, if applicable.
 
-\section{Implementation Plan}
+\section{Reimplementation Plan}
 \subsection{Software Development Practices}
 An excellent starting point for planning this project is to follow the principles laid out in agile software development. Agility is a concept often used to in business strategy and operation, referring to an organisation's ability to adapt to quickly changing business demands and put themselves in the most competitive position possible. This concept has naturally spread to software development practices and there now exist frameworks for teams to follow such as Scrum, lean software development and Kanban.
 
 % TODO with picture
+\begin{figure}[h]
+    \begin{center}
+        \fbox{\rule{0pt}{1.2in} \rule{0.99\linewidth}{0pt}}
+        %   \includegraphics[width=0.8\linewidth]{egfigure.pdf}
+    \end{center}
+    \caption{Agile Software Development Flowchart.}
+    \label{fig:agile_flow}
+\end{figure}
 
 Simply put, Agile development seeks to solve the problems which top-down uni-directional software development (called "waterfall") failed to address. It incorporates feedback-driven revision into the development process which allows quick pivoting based on all manner of contingent circumstances such as changing requirements, fickle clients and unforeseen roadblocks. The client is involved as an active member the developent process and does not end up with a potentially nasty surprise at the end.
 
@@ -227,12 +255,14 @@ The app will be released to students in Imperial College London through the Andr
 \section{Ethical, Legal and Safety Plan}
 This project has no actionable safety concerns, since there is no physical product in which the user might harm themselves with. The primary concerns are with the use of third-party intellectual property and the safe and compliant use of user data for analytics and product improvement.
 
+\subsection{Ethical Use of Habit-forming Design}
+
 \subsection{Software Licensing}
 This project will leverage the use of open-source software libraries and frameworks, the largest example of which is React Native. Open-source, by definition, allows the unrestricted redistribution and modification of a given piece of software for any purpose. As a secondary precaution, all packages used will be derived from the Node Package Manager (NPM) registry, which effectively serves as a central distribution point of open source packages pertaining to the javascript ecosystem (in which this project resides).
 
 Most, if not all packages registered on NPM have an open-source approved license selected for their project. That is, a license which is in accordance with the open-source philosophy of freely useable, modifiable and shareable code. The list can be found at \href{https://opensource.org/licenses}{the open source initiative organisational website}. Should the exceptional case arise in which a package is used which does not use one of these licenses, it will be explicitly justified and disclosed in its implementation documentation. However, this should technically never arise.
 
-\subsection{User Data Usage and Compliance}
+\subsection{User Data Legal Compliance}
 This study will use the General Data Protection Regulation (GDPR) as a basis of rules to follow in the ethical collection and use of user data. The following subsections will outline the parts of the GDPR deemed relevant to the nature of data used in this study, and perform a risk assessment of where grey areas may occur.
 
 In the interest of brevity, the GDPR checklist can be found \href{https://gdpr.eu/checklist/}{here}. In addition to having completed this checklist, the Sage application will adopt the following policies for the collection of user data:
