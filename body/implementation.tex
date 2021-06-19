@@ -1,2 +1,68 @@
 \chapter{Implementation}
-\section{Re-implementing the existing product}
+\section{Foreword}
+
+\subsection{Disclaimer}
+This section serves as engineering documentation for the project and implicitly assumes familiarity with a few technologies:
+\begin{itemize}
+    \item Source and version control: Github
+    \item Front-end web development: HTML, CSS and Javascript
+    \item Back-ends, databases and cloud services
+\end{itemize}
+
+For the sake of brevity, sections will contain links to documentation pages of relevant libraries. Since they are not academic references, documentation will be referenced using footnotes, which further facilitate easy, immediate reference.
+
+\subsection{A brief tour of React.JS}
+React.JS is a library which introduces a declarative syntax for making responsive user interfaces on the web. Readers familiar with web technologies will be familiar with the Document Object Model (DOM), which simply describes the layout of a webpage in a tree-like structure. React allows a developer to declare `what' should appear on screen, which is `rendered' as a virtual DOM. This virtual DOM is then compared with what is presently on the user's screen (the actual DOM) using a process called reconciliation, in which only the differing elements between the two trees are identified and re-rendered. This results in minimal computation to achieve the desired change in the user interface without requiring a page refresh on behalf of the user, and the result is a single-page application (SPA), which continues to be the dominant design for parts of many modern websites.
+
+The paradigm of `thinking in React' has now become so popular that React is a dominant presence in modern web stacks, and a highly in-demand skill for developers. Reactive paradigms have been further extended to new libraries such as React Native, which has an almost identical developer experience to React.JS, but transpiles down into native code for multiple platforms.
+
+\begin{itemize}
+    \item \href{https://reactjs.org/docs/hello-world.html}{React Docs - the starting point for any React developer}
+    \item \href{https://blog.isquaredsoftware.com/2020/05/blogged-answers-a-mostly-complete-guide-to-react-rendering-behavior/#rendering-process-overview}{A guide to React's rendering behaviour}
+\end{itemize}
+
+\section{DevOps Infrastructure}
+\subsection{Continuous Integration / Continuous Deployment}
+Continuous integration and deployment (or CI/CD) for short, is the process of automating and streamlining the development process in a way that allows developers to focus on business requirements and code quality instead of tedious deployment processes. Often, this is achieved by commissioning remote machines to run scripted actions (often called ``jobs'') whenever the codebase is updated. For this reason, many CI/CD solutions are offered as add-ons or plugins to popular version control systems. This section documents the jobs which implement the CI/CD pipeline for this project. All jobs are implemented with Github Actions under the \texttt{.github/workflows} folder in the root of the project repository.
+
+Github actions provide unlimited minutes to open-source repositories. Currently, the jobs take a total of about 20 minutes on each code change, which would easily exceed the quota for a private repository. If the code is to go closed-source for any reason, it may therefore be of interest to change to an alternate solution such as Travis CI or CircleCI.
+
+\subsection{Regression Testing and Runtime Stability}
+A key tenet of the software development lifecycle is to test code before deploying it. To this end, this project uses the open-source Jest testing library by Facebook. Jest implements a configurable test suite which recursively searches an entire Javascript project directory for any files ending in the \texttt{.test.js} extension, and provides a declarative syntax for writing and running tests. Developers can simply test for code regression by running a single command, and Jest displays a full breakdown of any test that failed as a result of recent code changes. The test suite is automatically run with every commit the main, android and ios branches of the repository, and will cause the jobs running them to produce an error whenever the test suite fails.
+
+Additionally, Javascript as a language is dynamically typed and thus highly prone to runtime errors. This, along with the use of React.JS's rendering engine, motivate the use of Typescript and immutable data. Readers experienced with low-level programming languages such as C and Fortran may not be used to functional paradigms
+
+\subsection{Build Stability}
+% TODO: Cite transpilation
+React and React Native are open source projects. By nature, React Native transpiles an existing React-like JavaScript codebase into an Android Kotlin project or an iOS project in Objective C. Historically, transpilation has always been a tricky process, with many machine-like equivalents of logic being ``lost in translation''. However, instead of simply losing a bit of semantic meaning, an error in this case can result in the entire program failing to build. Many redundancies are often implemented to prevent this, but some errors inevitably slip through.
+
+Throughout the development of this project, there were many instances in which the project would suddenly fail to build on Android or iOS after a period of development downtime without any change in the codebase. Most frustratingly, the project involves writing platform-specific code, which adds another dimension along which a developer could cause the project build to fail. The long toolchain involved in the project build results in enormously long stack traces, which result in a situations where a developer cannot possibly know if the project is now failing to build as a result of their own changes, or a dependency breaking along the chain.
+
+To fix this issue, two separate jobs are defined in \texttt{android.yml} and \texttt{ios.yml}. The two jobs build the installation binaries for both native operating systems and throw an error if any of them fail. Developers will thus instantly be made aware of a build failure, and can immediately work on understanding if the failure was due to the most recent change, or an unexpected change in the React Native dependency chain.
+
+Building the app requires the firebase configuration file, which contains secret keys and are not included in the source code. The firebase configuration files are first compressed into a tar archive, passphrase-encrypted with GPG and then uploaded to the repository root as \texttt{services.tar}.
+\texttt{gpg}. The passphrase is then kept as a repository secret, and loaded into an environment variable to decrypt and extract the configuration files on the build machine.
+
+\subsection{Product Deployment}
+Presently, the app is not deployed on any public stores due to the release process requiring a significant investment which is outside the scope of the project. Releasing the app on either store requires a monetary investment for a developer account (USD\$100), a privacy policy hosted on a owned domain and a collection of assets for a store page listing. As a proof-of-concept and temporary workaround, the job implemented in \texttt{releasedraft.yml} automatically builds a release binary of the app whenever a change is successfully pushed to the \texttt{main} branch.
+% TODO: FOOTNOTE
+Building a release APK requires an app to be signed using a consistent set of keys as a proof-of-work from the developer. These keys are contained in a keystore, which is encoded as a base64 string and then stored as a repository secret. The decryption passphrase is similarly stored as a repository secret, and both are loaded into environment variables for decryption on the build machine. Once the app is built and signed, the resulting build artefact (the release APK) is released on the repository with a new tag. In the future, this should be updated to use the API of the respective app stores to automate the release process.
+
+\section{Implementing Real-time Synchronisation}
+\subsection{Initial Data Model}
+\subsection{Revised Data Model}
+Halfway through development, it became apparent that the existing data model would not suffice to support a richer feature set. Projects needed to be broken down further into multiple deadlines, and a given deadline in focus had to be further decomposed into individual tasks on a per-session basis.
+
+
+\section{Other Features}
+\subsection{Authentication and Identity Management}
+Data synchronisation is achieved through a user's unique ID, which is unified across all their logins. The secure login is implemented through the Firebase SDK, which provides a single point of unified identity management using either email credentials or one of the supported providers. In this case, the project aims to support sign ins with Google, Facebook or email. Users are able to access their data and have the same experience across devices after logging in.
+
+\subsection{Do-not-disturb mode}
+Preventing notifications from disturbing a user is one of the key functionalities of the app. Its previous implementation was in fact, insufficient, as some notifications could still slip through despite the user being in the middle of a work interval. The native Android SDK gives a developer the ability to invoke a callback function whenever a notification is fired by the system. The previous notification-blocking functionality thus worked by adding code within this callback to dismiss the notification. This implementation has 2 fatal flaws: firstly, the asynchronous nature of the callback invocation meant that there would be edge cases in which running tasks on the main thread would delay the dismissal of the notification, therefore firing too late to dismiss it and allowing the notification through. Secondly, the dismissal of a notification meant that a user would not see them after the work interval is complete, potentially causing the user to miss important messages or calls.
+
+A more suitable implementation that fixes both of these faults lies in the Do-not-disturb (DnD) functionality provided by the Android OS. DnD mode suppresses notifications while active, preventing attention-grabbing features such as sound, vibration and the notification LED on the phone face. This has obvious applications for users who are driving, in important meetings, or otherwise wishing to be undisturbed. All notifications received in this mode are still visible to a user who deliberately picks up the phone and checks the notification inbox after the fact, which means users still have access to any important pieces of information delivered during the interval.
+
+% TODO: DnD Implementation.
+
+\section{User Interface}
