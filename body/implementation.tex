@@ -17,8 +17,17 @@ Developers often break their own code. Facebook, one of the world's largest soci
 
 The following sections outline the focal points of the infrastructure and tooling choices made in this project from a DevOps engineer's perspective.
 
-\subsection{Repository Structure}
 \subsection{Developer Workflow}
+The code is currently hosted open-source on \href{https://github.com/Darrekt/within-react-native}{Github}. Github offers many features which facilitate the implementation of many popular DevOps practices. A few examples are listed below, and will be elaborated on in further sections.
+
+\begin{itemize}
+    \item Secret keys are stored in non-readable repository secrets.
+    \item Non-collaborators cannot push changes directly to the repository.
+    \item Changes cannot be pushed to the \texttt{main} branch without all tests passing and an approving review from an approved author, who cannot be the one who submitted the pull request.
+    \item The build on the \texttt{main} branch is automatically deployed as the latest release whenever a change is effected.
+\end{itemize}
+
+In order to correctly maximise the utility of these features, a developer workflow is outlined in the project \texttt{README}. Invited collaborators may clone the repository directly and develop features on a separate branch, which will be merged into a staging branch (\texttt{development-staging}) before being approved to \texttt{main}. Non-collaborators who wish to contribute may fork the repository and submit a pull request from their fork, as per open-source norms.
 
 \subsection{Continuous Integration / Continuous Deployment}
 Continuous integration and deployment (or CI/CD) for short, is one of the cornerstones of DevOps. It automates and streamlines the development process in a way that allows developers to focus on business requirements and code quality instead of tedious deployment processes. Human error in the deployment process is also often the cause of system-wide failures and compromise of secret information, further motivating tested automation.
@@ -57,9 +66,23 @@ Presently, the app is not deployed on any public stores due to the release proce
 
 Building a release APK requires an app to be signed using a consistent set of keys as a proof-of-work from the developer. These keys are contained in a keystore, which is encoded as a base64 string and then stored as a repository secret. The decryption passphrase is similarly stored as a repository secret, and both are loaded into environment variables for decryption on the build machine. Once the app is built and signed, the resulting build artefact (the release APK) is released on the repository with a new tag. In the future, this should be updated to use the API of the respective app stores to automate the release process.
 
-\section{Implementing Real-time Synchronisation}
-\subsection{Firebase Billing}
-Firebase bills off of three key metrics: reads, writes and network eggress\footnote{\href{https://cloud.google.com/firestore/quotas}{Firebase quotas documentation}}. JSON-like objects are stored as documents in named collections, and documents may themselves hold subcollections. Therefore, an obvious was to optimise the schema for minimal reads is to hold more information within a single document. In the following examples, reads and writes are optimised by serialising small objects into \texttt{string} representations, which can then be kept in arrays under larger entities.
+\section{Minimum Working Examples}
+Minimum working examples (MWEs) are excellent ways of sanity-checking a project for feasiblity before beginning the development process. Sometimes, the explicit creation of an MWE is not necessary, as what is required is simply the knowledge that the proposed feature is possible to implement. This section thus highlights the research processes, or the resulting MWEs that were developed for some key features in the app.
+
+\subsection{Authentication and Identity Management}
+Data synchronisation is achieved through a user's unique ID, which is unified across all their logins. The secure login is implemented through the Firebase SDK, which provides a single point of unified identity management using either email credentials or one of the supported providers. In this case, the project aims to support sign ins with Google, Facebook or email. Users are able to access their data and have the same experience across devices after logging in.
+
+While Firebase offers support for third-party login providers, these are unfortunately unavailable in the scope of this project due to the lack of presence on an app store. Apple devices require any app offering social media sign-ins to offer AppleID sign ins first, which require a verified developer account and a published app on the App Store for security reasons. However, a traditional email and password style sign-in is fully implementable.
+
+\subsection{Do-not-disturb mode}
+Preventing notifications from disturbing a user is one of the key functionalities of the app. Its previous implementation was in fact, insufficient, as some notifications could still slip through despite the user being in the middle of a work interval. The native Android SDK gives a developer the ability to invoke a callback function whenever a notification is fired by the system. The previous notification-blocking functionality thus worked by adding code within this callback to dismiss the notification. This implementation has 2 fatal flaws: firstly, the asynchronous nature of the callback invocation meant that there would be edge cases in which running tasks on the main thread would delay the dismissal of the notification, therefore firing too late to dismiss it and allowing the notification through. Secondly, the dismissal of a notification meant that a user would not see them after the work interval is complete, potentially causing the user to miss important messages or calls.
+
+A more suitable implementation that fixes both of these faults lies in the Do-not-disturb (DnD) functionality provided by the Android OS. DnD mode suppresses notifications while active, preventing attention-grabbing features such as sound, vibration and the notification LED on the phone face. This has obvious applications for users who are driving, in important meetings, or otherwise wishing to be undisturbed. All notifications received in this mode are still visible to a user who deliberately picks up the phone and checks the notification inbox after the fact, which means users still have access to any important pieces of information delivered during the interval.
+
+The challenge now is accessing native android APIs from within React Native. As Figure \ref{fig:app_build_process} showed previously, the entire app is written in Typescript. However, React Native offers a \texttt{NativeModules} feature which allows developers to write native code modules which may be accessed across the language gap. Full documentation is available in the \href{https://reactnative.dev/docs/native-modules-intro}{React Native guide}. From here, turning on Do-not-disturb mode programmatically is a matter of navigating the Android APIs. The full code is available in \texttt{DnDMode.java}.
+
+\section{Structuring Productivity in Data}
+\subsection{Motivation}
 
 \subsection{Initial Data Model}
 \begin{figure}[h]
@@ -81,20 +104,12 @@ The previous iteration of the app only had support for todos. It was decided tha
     \label{fig:app_current_data_model}
 \end{figure}
 
-Halfway through development, it became apparent that the existing data model would not suffice to support a richer feature set. Projects needed to be broken down further into multiple deadlines, and a given deadline in focus had to be further decomposed into individual tasks on a per-session basis.
+Halfway through development, it became apparent that the existing data model would not suffice to support a richer feature set. Projects needed to be broken down further into multiple deadlines, and a given deadline in focus had to be further decomposed into individual tasks on a per-session basis. Figure \ref{fig:app_current_data_model} shows the ER model for the updated schema. This model allows for a structured breakdown of complex tasks, modelled after a typical student or academic's workload.
 
 \subsection{Syncing through snapshot listeners}
+Firebase bills off of three key metrics: reads, writes and network eggress\footnote{\href{https://cloud.google.com/firestore/quotas}{Firebase quotas documentation}}. JSON-like objects are stored as documents in named collections, and documents may themselves hold subcollections. Therefore, an obvious was to optimise the schema for minimal reads is to hold more information within a single document. Reads and writes are optimised by serialising small objects into \texttt{string} representations, which can then be kept in arrays under larger entities. In Firebase, all deadlines and todos are held under a single project's document. The entire app's state is therefore encapsulated in the array of \texttt{Projects} that a given user has. Changes to any entity (Todo, Deadline or Project) also consequently only cost 1 document write under this schema.
 
-\section{Other Features}
-\subsection{Authentication and Identity Management}
-Data synchronisation is achieved through a user's unique ID, which is unified across all their logins. The secure login is implemented through the Firebase SDK, which provides a single point of unified identity management using either email credentials or one of the supported providers. In this case, the project aims to support sign ins with Google, Facebook or email. Users are able to access their data and have the same experience across devices after logging in.
-
-\subsection{Do-not-disturb mode}
-Preventing notifications from disturbing a user is one of the key functionalities of the app. Its previous implementation was in fact, insufficient, as some notifications could still slip through despite the user being in the middle of a work interval. The native Android SDK gives a developer the ability to invoke a callback function whenever a notification is fired by the system. The previous notification-blocking functionality thus worked by adding code within this callback to dismiss the notification. This implementation has 2 fatal flaws: firstly, the asynchronous nature of the callback invocation meant that there would be edge cases in which running tasks on the main thread would delay the dismissal of the notification, therefore firing too late to dismiss it and allowing the notification through. Secondly, the dismissal of a notification meant that a user would not see them after the work interval is complete, potentially causing the user to miss important messages or calls.
-
-A more suitable implementation that fixes both of these faults lies in the Do-not-disturb (DnD) functionality provided by the Android OS. DnD mode suppresses notifications while active, preventing attention-grabbing features such as sound, vibration and the notification LED on the phone face. This has obvious applications for users who are driving, in important meetings, or otherwise wishing to be undisturbed. All notifications received in this mode are still visible to a user who deliberately picks up the phone and checks the notification inbox after the fact, which means users still have access to any important pieces of information delivered during the interval.
-
-% TODO: DnD Implementation.
+Firebase offers snapshot listener functions as part of its Javascript API. These follow a publish / subscribe (pub/sub) model where a subscription function is passed a callback to execute. Real-time synchronisation is thus achieved by loading the updated app state into the app whenever a new state is published.
 
 \section{User Interface}
 

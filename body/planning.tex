@@ -28,7 +28,6 @@ Some further stretch goals include other features like an in-app social experien
 \subsection{Software Development Practices}
 An excellent starting point for planning this project is to follow the principles laid out in agile software development. Agility is a concept often used to in business strategy and operation, referring to an organisation's ability to adapt to quickly changing business demands and put themselves in the most competitive position possible. This concept has naturally spread to software development practices and there now exist frameworks for teams to follow such as Scrum, lean software development and Kanban.
 
-% TODO with picture
 \begin{figure}[h]
     \begin{center}
         \includegraphics[width=0.6\linewidth]{images/methodology-agile.png}
@@ -40,7 +39,7 @@ An excellent starting point for planning this project is to follow the principle
 Simply put, Agile development seeks to solve the problems which bottom-up uni-directional software development (called "waterfall") failed to address. It incorporates feedback-driven revision into the development process which allows quick pivoting based on all manner of contingent circumstances such as changing requirements, fickle clients and unforeseen roadblocks. The client is involved as an active member the developent process and does not end up with a potentially nasty surprise at the end.
 
 \subsection{Time Management and Limiting Factors}
-There are 3 key members in this project team in this interim phase: the part-time solo developer, the supervisor and a consultant who doubles as the client. Given the timing and nature of term-time work, the structure of development cycles must be flexible to accomodate for unforeseen workload variance on behalf of the developer or consultant. Core members are only available on a part-time basis until the summer term,
+There are 3 key members in this project team: the solo developer (myself), the project supervisor and a consultant neuroscientist who doubles as the client. Given the timing and nature of term-time work, the structure of development cycles must be flexible to accomodate for unforeseen workload variance on behalf of the developer or consultant. Core members are only available on a part-time basis until the summer term,
 
 We therefore structure work into variable 2 or 1-week sprints, taking after agile software development practices instead of a typical waterfall Gantt chart structure. Each sprint will begin with a meeting with all 3 members, consisting of a progress update of work done in the previous week and review of improvement points. Important points of critique will be added to the backlog of they are actionable. A selection of tasks will then be selected from the backlog to serve as the priorities for the upcoming sprint, based on developer bandwidth for the week. Until full-time development in the Summer term, we expect to mostly develop minimum-working examples of each feature to show that they work and are implementable.
 
@@ -51,7 +50,7 @@ A long standing problem in the development of mobile applications has been that 
 
 Cross-platform development seeks to solve this problem, often by creating a workflow in a given language which may then be transpiled into native platform code. While this solves the aforementioned problem, it also creates problems of its own. Cross-platform frameworks usually offer a reduced set of features compared to their native counterparts, since they effectively have to duplicate the API that the native platform exposes using different language semantics, which may not even be possible in some cases.
 
-Despite this, cross-platform frameworks have found their niche in helping small teams of developers bring a concept to market quickly. It is for this reason that this project will use a cross-platform framework in order to bring the product to iOS in a way that is extensible for future work, especially since no feature in this app requires the complexity that native development offers. The following subsections will evaluate the current two most popular choices of cross-platform frameworks.
+Despite this, cross-platform frameworks have found their niche in helping undermanned teams of developers bring a concept to market quickly. It is for this reason that this project will use a cross-platform framework in order to bring the product to iOS in a way that is extensible for future work, especially since no feature in this app requires the complexity that native development offers. The following subsections will evaluate the current two most popular choices of cross-platform frameworks.
 
 \subsubsection{Flutter}
 Flutter is a recent framework released in 2017 by Google, aiming to provide a set of out-of-the-box interface elements to enable quick development of beautiful user interfaces. As of the time of writing, Flutter has full support for iOS 14, Android 11, macOS, Windows and web \cite{fluttersupportedplatforms}.
