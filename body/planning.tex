@@ -6,7 +6,7 @@ This project seeks to create a user experience that leverages the concepts explo
 \underline{Functional Requirements}
 \begin{itemize}
     \item Goal and To-do list functionality.
-    \item Focus timer functionality, implementing pomodoro or some other productivity framework.
+    \item Focus timer functionality, implementing 25-minute work periods as per the \href{http://www.baomee.info/pdf/technique/1.pdf}{pomodoro technique} \cite{cirillo2006pomodoro}.
     \item Improve the current self-feedback system. The current statistics offered to the user are not visualised in a meaningful way over time, and some of them feel like they might not even be helpful.
     \item Implement notification blocking functionality with the use of \textit{Do not Disturb} mode, instead of the current implementation.
     \item Offer online cloud storage, identity management and synchronisation of user data.
@@ -109,7 +109,7 @@ In summary, the features that it provides will service the needs of future devel
 % Proposed evaluation metrics
 Instead of the typical academic approach of conducting individual user studies on a select sample, this app hopes to build feedback in to the app as part of the user experience. The app is thus hosted on a cloud provider with a generous "free tier" allowance, allowing us to experiment with a sizeable user base of what we estimate to be up to 500 users before cloud computing costs actually start to kick in.
 
-For this study, the concerns are not to develop the world's best-selling productivity app or to gain traction with a massive user base. This preliminary phase of the project is to find a way to measurably determine how effectively the Sage platform does its job of helping users stay on task. The refinement, re-selection and validity of these metrics will have to be determined as part of future work when the app is released in beta to the test audience. As an example, we may wish to measure a given user's productivity on a day-to-day basis by capturing a "productive window" in which a user continues to execute tasks without a significant (15 minute) disruption.
+For this study, the concerns are not to develop the world's best-selling productivity app or to gain traction with a massive user base. This preliminary phase of the project is to find a way to measurably determine how effectively the Sage platform does its job of helping users stay on task. The refinement, re-selection and validity of these metrics will have to be determined as part of future work when the app is released in beta to the test audience. As an example, we may wish to measure a given user's productivity on a day-to-day basis by capturing a ``productive window'' in which a user continues to execute tasks without a significant (15 minute) disruption.
 
 The app will be released to students in Imperial College London through the Android and iOS distribution channels, with its intentions clearly stated in both publicity efforts and as part of the in-app onboarding process. We hope to complete development on the alpha release in time for the Easter holiday, when students will be focusing on studying for exams.
 
@@ -127,7 +127,7 @@ This study will use the General Data Protection Regulation (GDPR) as a basis of 
 In the interest of brevity, the GDPR checklist can be found \href{https://gdpr.eu/checklist/}{here}. In addition to having completed this checklist, the Sage application will adopt the following policies for the collection of user data:
 
 \begin{itemize}
-    \item Users will be explicitly informed during the onboarding process what data we collect for evaluation metrics and how we will use it. The usage of the app requires the user to consent to this, as there is otherwise no point in us offering the service which could otherwise incur cloud computing costs.
+    \item Once implemented, users will be explicitly informed via a transparent and detailed privacy policy what data we collect for evaluation metrics and how we will use it. The usage of the app requires the user to consent to this, as there is otherwise no point in offering the service which could otherwise incur cloud computing costs.
     \item The application does not capture any data defined by the GDPR as "personal", except for the user's email. Evaluation metrics, while potentially changing over the course of the project, should not allow the de-anonymisation of a given user.
     \item Data will be sent and stored using secure channels, using third-party GDPR compliant vendors where applicable.
     \item In the unlikely event of a data leak, users will be immediately informed via email what was leaked. However, none of this data should be particularly harmful to a user even if this should happen.
@@ -135,4 +135,4 @@ In the interest of brevity, the GDPR checklist can be found \href{https://gdpr.e
 \end{itemize}
 
 \section{Concluding Remarks}
-A full implementation plan has been developed. However, the primary cause concern for this project is the shortage of developer manpower. Successful social media apps are usually developed across large enterprise teams, each of which "owns" a specific part of the product. Even then, a polished product typically emerges only after many cycles of product iteration. A realistic goal for this project is therefore to implement an excellent product to the best of our ability and have infrastructure in place to guide future development and iteration.
+A full implementation plan has been developed. However, the primary cause concern for this project is the shortage of developer manpower. Successful social media apps are usually developed across large enterprise teams, each of which ``owns'' a specific part of the product. Even then, a polished product typically emerges only after many cycles of product iteration. A realistic goal for this project is therefore to implement an excellent product to the best of our ability and have infrastructure in place to guide future development and iteration.
