@@ -1,18 +1,74 @@
 \chapter{Evaluation}
-\section{Deployment and Release}
+\section{Summary of Achievements}
+\subsection{Engineering Milestones}
+\begin{table}[h]
+	\begin{tabular}{l|cc}
+		Feature                          & Sage & Within     \\
+		\hline
+		Multi-platform code              &      & \checkmark \\
+		Global, immutable state          &      & \checkmark \\
+		Regression testing               &      & \checkmark \\
+		Automated test runner            &      & \checkmark \\
+		Automated app signing \& release &      & \checkmark \\
+	\end{tabular}
+	\caption{Engineering / DevOps Feature Comparison}
+	\label{tab:devops_milestones}
+\end{table}
+
+Table \ref{tab:devops_milestones} summarises the infrastructure and DevOps improvements made throughout this run of the project. Within implements many automated processes which were not present in Sage, and has a fully automated push-to-release CI/CD process, which eliminates possibility for the compromise of secure keys and incorrect version uploads.
+
+\subsection{Feature Offerings}
+\begin{table}[h]
+	\begin{tabular}{l|ccc}
+		Feature                   & Sage       & Within (Android) & Within (iOS) \\ \hline
+		Todo list                 & \checkmark & \checkmark       & \checkmark   \\ \hline
+		Pomodoro timer            & \checkmark & \checkmark       & \checkmark   \\ \hline
+		Daily task scheduling     & \checkmark & \checkmark       & \checkmark   \\ \hline
+		Visualisations            & \checkmark & \checkmark       & \checkmark   \\ \hline
+		Notification blocking     & ?          & \checkmark       & \checkmark   \\ \hline
+		Projects and deadlines    &            & \checkmark       & \checkmark   \\ \hline
+		Productivity history      &            & \checkmark       & \checkmark   \\ \hline
+		\begin{tabular}[c]{@{}l@{}}Real-time multi-device \\ synchronisation\end{tabular} &            & \checkmark       & \checkmark   \\ \hline
+		Cloud-synced data         &            & \checkmark       & \checkmark   \\ \hline
+		\begin{tabular}[c]{@{}l@{}}Distraction deterrence:\\ push notifications\end{tabular} &            & \checkmark       & \checkmark   \\ \hline
+		\begin{tabular}[c]{@{}l@{}}User interaction \\ tracking features\end{tabular} &            & \checkmark       & \checkmark   \\ \hline
+		In-app feedback gathering &            & \checkmark       & \checkmark
+	\end{tabular}
+	\caption{App Feature Comparison}
+	\label{tab:feature_milestones}
+\end{table}
+
+\section{User Feedback}
+\subsection{Deployment and Release}
 An original goal of this run of the project was to deploy the application on the Google Play store for Android and the App store for Apple devices. However, a number of unforeseen circumstances have surfaced to prevent this:
 
 \begin{itemize}
 	\item Each app store requires the purchase of a developer account. In total, this costs \$125 USD.
 	\item Each app store requires graphic assets for store listing pages, which require the intervention of a designer.
-	\item Release on the app store requires a long review process, especially for apps which request sensitive permissions (such as this one). A privacy policy must be accessible from a verified-owned domain. 
+	\item Release on the app store requires a long review process, especially for apps which request sensitive permissions (such as this one). A privacy policy must be accessible from a verified-owned domain.
 	\item Increased app store review times at the time of intended submission meant that the app could not be live before the project deadline.
 \end{itemize}
 
 While all the above criteria are technically possible to fulfill with temporary placeholders, the release process involves several rounds of internal testing to invite-exclusive testers. Due to project and time constraints, this internal testing can be manually executed through the automated Github release, since feedback has been built-in as part of the app interface. This allows us to properly prepare the relevant resources for an app store release over the summer, in time for the next run of the project to resume development.
 
-\section{Engineering Milestones}
+Modern app users have extremely high expectations of apps. Slight amounts of jitter or other frustration through the user experience can be a death sentence, causing a user to uninstall an app. However, iterative development is the only way of producing an app of passable quality. This results in a chicken-and-egg problem, which is solved using incremental releases. The Google Play ecosystem supports this out-of-the-box, encouraging developers to use their internal frameworks which release the app to a gradually increasing audience as follows:
 
-\section{Feature Offerings}
+\begin{itemize}
+	\item Internal Testing: The app is first released to an invite-only email list of up to 100 internal testers, chosen by the developer. Feedback must be manually aggregated.
+	\item Closed Testing: The app is released via the Google Play Store to an invite-only group of testers. Feedback can be gathered using the Google Play Store, but is only visible to the developer. Support for multiple testing tracks is available, allowing the developer to push a different version of the app to different test groups.
+	\item Open Testing: Similar to closed testing, but available to any member of the public who signs up via the Play Store. Also supports multiple additional features for pre-release. Open testing often happens in parallel with a production build, where upcoming features are offered to existing users through the open testing initiative.
+\end{itemize}
 
-\section{User Feedback}
+\subsection{Qualitative Results}
+Without access to either app store, conducting internal testing manually is the only option available within this run of the project. 20 Android users were chosen to test the app. Some examples of the initially reported problems were as follows:
+
+\begin{itemize}
+	\item Onboarding screens were not rendering consistently across different Android devices.
+	\item Some users reported uninformed crashes or incorrect dialogs during the sign-in process.
+	\item Some interactive elements did not work consistently on some users' devices.
+	\item The focus timer itself did not offer enough incentive to stay within the app. Users still were distracted and went to use other apps without receiving a push notification ``trigger''.
+\end{itemize}
+
+This highlights a problem with cross-platform development. Many phone manufacturers develop their own flavour of the Android operating system which uses the underlying open-source Android kernel, but introduces slight differences which are difficult for developers to cater for. As such, features which may perform as expected on an emulator or a given user's phone may misbehave on another. The use of libraries in React Native adds a further level of abstraction which may contain platform and version-specific code, and therefore the reasons why a given bug may exist can be very difficult to track. Fortunately, due to the in-app feedback infrastructure and cloud-sync functionalities of the app, it is possible to add crash reporting functionality to the app which logs the user's device information along with the crash logs.
+
+After a few initial rounds of feedback and bug-fixing, users reported a pleasant app experience and reported that while they enjoyed the app and its concept, they would like to see more features, which will be documented in the future works section.
