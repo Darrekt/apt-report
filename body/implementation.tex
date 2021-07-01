@@ -12,8 +12,10 @@ For the sake of brevity, sections will contain links to documentation pages of r
 
 The goal is to create a high-quality app platform that is built for legacy and continued work. The first step is therefore to implement previously non-existent development infrastructure, especially since the online nature of the new app involves secret keys which can be monetarily exploited if compromised.
 
+
 \section{DevOps Implementations}
 The following sections outline the focal points of the infrastructure and tooling choices made in this project from a DevOps engineer's perspective.
+
 
 \subsection{Developer Workflow}
 The code is currently hosted open-source on \href{https://github.com/Darrekt/within-react-native}{Github}. Source control systems often are the first line of defence in code deployment and Github offers features to allow developers to implement secure rules on their repositories. The rules for the Within project are listed below, and will be elaborated in further sections.
@@ -27,16 +29,18 @@ The code is currently hosted open-source on \href{https://github.com/Darrekt/wit
 
 In order to correctly maximise the utility of these features, a developer workflow is outlined in the project \texttt{README}. Github unfortunately does not offer strict branch protection like other version control systems, and thus developers must adhere to these guidelines, as they are not enforced by the system. Invited collaborators may clone the repository directly and develop features on a separate branch, which will be merged into a staging branch (\texttt{development-staging}) before being approved to \texttt{main}. Non-collaborators who wish to contribute may fork the repository and submit a pull request from their fork, as per open-source norms.
 
+
 \subsection{Continuous Integration / Continuous Deployment Infrastructure}
 Automated CI/CD tasks are run by commissioning remote machines to run scripted actions (often called ``jobs'') whenever the codebase is updated. For this reason, many CI/CD solutions are offered as add-ons or plugins to popular version control systems, so that they may be run as post-commit hooks. All jobs in this project are implemented with Github Actions. Each action is implemented in YAML syntax under the \texttt{.github/workflows} folder in the root of the project repository. Github actions provide unlimited minutes to open-source repositories. Currently, the jobs take a total of about 20 minutes on each code change, which would easily exceed the quota for a private repository. If the code is to go closed-source for any reason, it may therefore be of interest to change to an alternate solution such as Travis CI or CircleCI.
+
 
 \subsection{Regression Testing and Runtime Stability}
 A key tenet of the software development lifecycle is to test code before deploying it. To this end, this project uses the open-source Jest testing library by Facebook. Jest implements a configurable test suite which recursively searches an entire Javascript project directory for any files ending in the \texttt{.test.js} extension, and provides a declarative syntax for writing and running tests. Developers can simply test for code regression by running a single command, and Jest displays a full breakdown of any test that failed as a result of recent code changes. The test suite is automatically run with every commit the main, android and ios branches of the repository, and will cause the jobs running them to produce an error whenever the test suite fails.
 
 Additionally, Javascript as a language is dynamically typed and thus highly prone to runtime errors. This, along with the use of React.JS's rendering engine, motivate the use of Typescript and immutable data. we will later see examples of how using strongly type-checked immutable data structures to track the state of the app greatly reduces the occurence of runtime errors that would have otherwise have been very difficult to detect using vanilla React.JS.
 
-\subsection{Build Stability}
 
+\subsection{Build Stability}
 \begin{figure}[h]
     \begin{center}
         \includegraphics[scale=0.55]{images/app_build_path.png}
@@ -55,24 +59,56 @@ To address this issue, two automated jobs are defined in \texttt{android.yml} an
 
 Developers are instantly be made aware of a build failure via email, and can immediately work on understanding if the failure was due to the most recent change, or an unexpected change in the React Native dependency chain.
 
+
 \subsection{Product Deployment}
 Presently, the app is not deployed on any public stores due to the release process requiring a significant investment which is outside the scope of the project. Releasing the app on either store requires a monetary investment for a developer account (USD\$125), a privacy policy hosted on an owned domain and a collection of assets for a store page listing. As a proof-of-concept and temporary workaround, the job implemented in \texttt{releasedraft.yml} automatically builds a release binary of the app whenever a change is successfully pushed to the \texttt{main} branch.
 
 Building a release APK requires an app to be signed using a consistent set of keys as proof-of-work from the developer. These keys are contained in a keystore, which is encoded as a base64 string and then stored as a repository secret. The decryption passphrase is similarly stored as a repository secret, and both are loaded into environment variables for decryption on the build machine. Once the app is built and signed, the resulting build artefact (the release APK) is released on the repository with a new tag. In the future, this should be updated to use the API of the respective app stores to automate the release process.
 
-\section{Feature Documentation}
-Instead of exhaustively documenting screen flow which is best left to a live demo, the documentation in the sections to follow will detail a feature at a time.
 
-Minimum working examples (MWEs) are excellent ways of sanity-checking a project for feasiblity before beginning the development process. Sometimes, the explicit creation of an MWE is not necessary, as what is required is simply the knowledge that the proposed feature is possible to implement. This section thus highlights the research processes, or the resulting MWEs that were developed for some key features in the app.
+\section{Developer Documentation}
+Instead of exhaustively documenting screen flow which is best left to a live demo, the documentation in the sections to follow will detail the implemented features of the app in an order which is conducive to onboarding a new developer. New developers should adhere strictly to the contributing guidelines in the Github repository README.
+
+\subsection{A brief tour of React}
+React.JS is a library which introduces a declarative syntax for making responsive user interfaces on the web. Readers familiar with web technologies will be familiar with the Document Object Model (DOM), which simply describes the layout of a webpage in a tree-like structure. React allows a developer to declare `what' should appear on screen, which is `rendered' as a virtual DOM. This virtual DOM is then compared with what is presently on the user's screen (the actual DOM) using a process called reconciliation, in which only the differing elements between the two trees are identified and re-rendered. This results in minimal computation to achieve the desired change in the user interface without requiring a page refresh on behalf of the user, and the result is a single-page application (SPA), which continues to be the dominant design for parts of many modern websites.
+
+The paradigm of `thinking in React' has now become so popular that React is a dominant presence in modern web stacks, and a highly in-demand skill for developers. Reactive paradigms have been further extended to new libraries such as React Native, which has an almost identical developer experience to React.JS, but transpiles down into native code for multiple platforms. React Native reads and largely feels like working in React.JS, but introduces a set of components which act as wrappers around native APIs to produce a codebase which has one consistent syntax which renders an app across multiple devices, and enables business logic to be entirely contained in JavaScript. There are naturally exceptions to this, such as when some APIs are only avaiable on one native OS and not the other, as we will see later.
+
+As mentioned before, Within also makes extensive use of TypeScript (TS), which greatly increases code clarity and reduces runtime errors using compile-time type-checks, at the cost of writing slightly more upfront code. Since TypeScript is a typed superset of JavaScript (JS), this means that all valid JS code is valid TS code, and the result is a natural learning curve which a given develop can lean into as much as they prefer.
+
+The root React node is contained in `App.tsx', which contains other setup code for libraries which require initialisation outside of the standard React component lifecycle. Before proceeding, developers should read the documentation links below, as these concepts are heavily used in this repository.
+
+\begin{itemize}
+    \item \href{https://reactjs.org/docs/hello-world.html}{React Docs} - the starting point for any React developer. Read all main concepts.
+    \item \href{https://blog.isquaredsoftware.com/2020/05/blogged-answers-a-mostly-complete-guide-to-react-rendering-behavior/#rendering-process-overview}{A guide to React's rendering behaviour}
+    \item \href{https://reactjs.org/docs/context.html}{React Context documentation}. Context is heavily used to pass data downwards through the component tree without having to bloat an entire chain of component props.
+    \item \href{https://reactjs.org/docs/hooks-intro.html}{React Hooks documentation}. Hooks are a concise way of using component lifecycle methods and other React utilities without having to create a verbose class-based component. Almost all components in Within are function-based components.
+    \item \href{https://www.typescriptlang.org/docs/}{Typescript Docs}
+\end{itemize}
+
+\subsection{Global App State}
+A productivity app such as Within is naturally a write-heavy application, with state that changes on every user interaction. Such constantly changing state needs to be accessible in many different parts of the component tree, motivating the use of a single, global state. However, global states similarly require careful management and needs to be mutated in a stable manner to prevent crashing the app. All of these problems are solved by the Redux paradigm, which promotes the use of a single, immutable state contained in a plain, serializable JavaScript object.
+
+Redux generates a new state based on the current state and an action, the processing of which is handled by a reducer. The global app state is thus a non-mutable object which determines how the rest of the app behaves. Immutability provides many benefits. In this case, the app state is always deterministic and since new states are generated instead of mutating old states, time-travel debugging and an undo history are easily implementable.
+
+The react-native-redux library provides a nice wrapper for use in this repository, allowing us to provide a global store through context at the root level of the app. The reference of the store itself does not change when actions are dispatched, and components down the tree use selectors to select specific parts of the global state to ``listen'' to. This results in a performant user interface which only re-renders the relevant parts of the component tree when relevant bits of the app state change, instead of the entire tree. Similarly, the dispatch function which is used to dispatch actions for the store is also provided globally at the root using context, and is abstracted by the \texttt{useAppDispatch} hook. It is noteworthy at this point that both \texttt{useAppDispatch} and \texttt{useAppSelector} are wrappers around their base counterparts from the react-native-redux library. This is to ensure appropriate typing through TypeScript so that the dispatcher accepts asynchronous thunk actions and not just pure action objects.
+
+The global state in this case is also split into segmented parts using reducer-splitting, in which each part of the app state is handled by a sub-reducer. All redux and state-related implementations are contained in the `redux' folder.
+
+Real-time synchronisation is achieved by adopting a database-first design for this app, which means the app state stored in the database is taken to be the single source of truth, and actions therefore cause changes in the app by writing directly to the database. This, however, is an asynchronous action which happens over a network. Since Redux reducers are meant to be pure functions without side-effects, the database writes are handled using thunks, which are a simple way of dispatching asynchronous side-effects to Redux stores.
+
 
 \subsection{Authentication and Identity Management}
 Data synchronisation is achieved through a user's unique ID, which is unified across all their logins. The secure login is implemented through the Firebase SDK, which provides a single point of unified identity management using either email credentials or one of the supported providers. In this case, the project aims to support sign ins with Google, Facebook or email. Users are able to access their data and have the same experience across devices after logging in.
 
 While Firebase offers support for third-party login providers, these are unfortunately unavailable in the scope of this project due to the lack of presence on an app store. Apple devices require any app offering social media sign-ins to offer AppleID sign ins first, which require a verified developer account and a published app on the App Store for security reasons. However, a traditional email and password style sign-in is fully implementable.
 
+In Within, the user's login status is held in the \texttt{appSettings}-related reducers. A single listener in the `StackScreens.tsx' component dispatches an action whenever the user's Firebase login state changes.
+
+
 \subsection{Structuring Productivity in Data}
 \subsubsection{Motivation}
-As discussed previously, a key factor in successful self-regulation is the amount of cognitive effort required to successfully execute a task. Therefore, procrastination is best avoided if users are able to consistently plan their work schedules into small, manageable tasks which can be completed in a single 25-minute focus interval. 
+As discussed previously, a key factor in successful self-regulation is the amount of cognitive effort required to successfully execute a task. Therefore, procrastination is best avoided if users are able to consistently plan their work schedules into small, manageable tasks which can be completed in a single 25-minute focus interval. In Sage, this was entirely the user's responsibility as only to-dos could be created without any form of structure other than daily recurring tasks. Within thus seeks to introduce a more deliberate structure that emulates real project work, with a more longitudinal time scope and time-sensitive deliverables in-between.
 
 \subsubsection{Initial Data Model}
 \begin{figure}[h]
@@ -99,7 +135,8 @@ Halfway through development, it became apparent that the existing data model wou
 \subsubsection{Syncing through snapshot listeners}
 Firebase bills off of three key metrics: reads, writes and network eggress\footnote{\href{https://cloud.google.com/firestore/quotas}{Firebase quotas documentation}}. JSON-like objects are stored as documents in named collections, and documents may themselves hold subcollections. Therefore, an obvious was to optimise the schema for minimal reads is to hold more information within a single document. Reads and writes are optimised by serialising small objects into \texttt{string} representations, which can then be kept in arrays under larger entities. In Firebase, all deadlines and todos are held under a single project's document. The entire app's state is therefore encapsulated in the array of \texttt{Projects} that a given user has. Changes to any entity (Todo, Deadline or Project) also consequently only cost 1 document write under this schema.
 
-Firebase offers snapshot listener functions as part of its Javascript API. These follow a publish / subscribe (pub/sub) model where a subscription function is passed a callback to execute. Real-time synchronisation is thus achieved by loading the updated app state into the app whenever a new state is published.
+Firebase offers snapshot listener functions as part of its Javascript API. These follow a publish / subscribe (pub/sub) model where a subscription function is passed a callback to execute. Real-time synchronisation is thus achieved by dispatching an action which loads the updated app state into the app whenever a new state is published.
+
 
 \subsection{Do-not-disturb mode}
 Preventing notifications from disturbing a user is one of the key functionalities of the app. Its previous implementation was in fact, insufficient, as some notifications could still slip through despite the user being in the middle of a work interval. The native Android SDK gives a developer the ability to invoke a callback function whenever a notification is fired by the system. The previous notification-blocking functionality thus worked by adding code within this callback to dismiss the notification. This implementation has 2 fatal flaws: firstly, the asynchronous nature of the callback invocation meant that there would be edge cases in which running tasks on the main thread would delay the dismissal of the notification, therefore firing too late to dismiss it and allowing the notification through. Secondly, the dismissal of a notification meant that a user would not see them after the work interval is complete, potentially causing the user to miss important messages or calls.
@@ -108,17 +145,15 @@ A more suitable implementation that fixes both of these faults lies in the Do-no
 
 The challenge now is accessing native android APIs from within React Native. As Figure \ref{fig:app_build_process} showed previously, the entire app is written in Typescript. However, React Native offers a \texttt{NativeModules} feature which allows developers to write native code modules which may be accessed across the language gap. Full documentation is available in the \href{https://reactnative.dev/docs/native-modules-intro}{React Native guide}. From here, turning on Do-not-disturb mode programmatically is a matter of navigating the Android APIs. The full code is available in \texttt{DnDMode.java}.
 
-\section{Responsive User Interface}
-\subsection{A brief tour of React.JS}
-React.JS is a library which introduces a declarative syntax for making responsive user interfaces on the web. Readers familiar with web technologies will be familiar with the Document Object Model (DOM), which simply describes the layout of a webpage in a tree-like structure. React allows a developer to declare `what' should appear on screen, which is `rendered' as a virtual DOM. This virtual DOM is then compared with what is presently on the user's screen (the actual DOM) using a process called reconciliation, in which only the differing elements between the two trees are identified and re-rendered. This results in minimal computation to achieve the desired change in the user interface without requiring a page refresh on behalf of the user, and the result is a single-page application (SPA), which continues to be the dominant design for parts of many modern websites.
 
-The paradigm of `thinking in React' has now become so popular that React is a dominant presence in modern web stacks, and a highly in-demand skill for developers. Reactive paradigms have been further extended to new libraries such as React Native, which has an almost identical developer experience to React.JS, but transpiles down into native code for multiple platforms.
+\subsection{Disruption Detection}
+Even with notifications disabled, users are likely to be distracted when faced with roadblocks or difficult tasks, and may flee the app to seek momentary relief on social media or other distracting apps. A solution to this would be if the Within app could detect when such distractions occur, and prompt the user's pre-frontal cortex to wrest back control.
 
-\begin{itemize}
-    \item \href{https://reactjs.org/docs/hello-world.html}{React Docs - the starting point for any React developer}
-    \item \href{https://blog.isquaredsoftware.com/2020/05/blogged-answers-a-mostly-complete-guide-to-react-rendering-behavior/#rendering-process-overview}{A guide to React's rendering behaviour}
-\end{itemize}
+Apps on phones typically adopt one of three states: they are either foregrounded, backgrounded or inactive. React Native provides nice utilities around these states \footnote{React Native AppState documentation available \href{https://reactnative.dev/docs/next/appstate}{here}}, allowing the developer to attach callback functions when such state transitions are triggered.
 
-\subsection{Global App State}
-% Recursive model-diffing
-% Time-travel state
+The relevant listener is subscribed in \texttt{TodoTimer.tsx}. The relevant code attaches an event handler in a post-render hook using \texttt{useEffect}. Since the timer component re-renders whenever the selected task changes, it is necessary to re-subscribe the listener whenever the timer re-renders, and the selected todo is therefore included in the dependency array.
+
+The listener uses the \texttt{react-native-push-notification} library to push a notification to the user whenever the app takes on a non-active state while the timer is running. For this to be fully effective, however, users must manually allow the Within app to push notifications through do-not-disturb mode, which would be active when the timer is running. There is no way for the developer to enable this programmatically, and thus the user has to be clearly guided through this process as part of a future onboarding flow.
+
+\section{User Interface Design}
+\subsection{Material UI}
