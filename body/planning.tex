@@ -71,13 +71,13 @@ React Native was released by Facebook in 2014 and continues to be one of the mos
 The result is a smooth cross-platform experience that offers close-to-native performance and a fully-functioning native bridge to give developers full flexibility in writing native code where necessary. The success of React Native has attracted many reputable companies to build their platforms with it, such as Walmart, UberEats, Bloomberg and Pinterest \cite{rnplatforms}.
 
 \subsection{Comparison}
-The primary cause of concern regarding framework choice in this project is which one best enables speed of development. This project is scoped, designed and executed by a single engineer. The scope proposed so far is usually the work of multiple full-time software engineering teams. The age and reduced developer community size for Flutter is therefore a deal-breaker in this case. The NPM registry for JavaScript currently boasts over 1 million packages in comparison to its Flutter equivalent, pub.dev which currently has around 21000. Developer documentation and community FAQ pages are also likely to have answers to issues on JavaScript rather than Dart, which means much more time can be spent focusing on higher level application design instead of "re-inventing the wheel".
+The primary cause of concern regarding framework choice in this project is which one best enables speed of development. This project is scoped, designed and executed by a single engineer. The scope proposed so far is usually the work of multiple full-time software engineering teams. The age and reduced developer community size for Flutter is therefore a deal-breaker in this case. The NPM registry for JavaScript currently boasts over 1 million packages in comparison to its Flutter equivalent, pub.dev which currently has around 21000. Developer documentation and community FAQ pages are also likely to have answers to issues on JavaScript rather than Dart, which means much more time can be spent focusing on higher level application design instead of ``re-inventing the wheel".
 
 \section{Choosing a Cloud Hosting Vendor}
 \subsection{Cloud Infrastructure}
 Based on requirements so far, the application will also require a back-end with a database for persistent storage of user data. This, along with what will potentially be the web version of the app, will require hosting on a server. This section briefly evaluates a selection of popular cloud service vendors and how their offerings are relevant to the requirements of this project.
 
-The offering of a Cloud-service provider can be thought of as the balance of two philosophies: "bare-metal" providers, and managed solutions. Bare-metal refers to the act of simply provisioning computing resources on a machine, the specifics of which are left up to the user to implement. The state-of-the-art nowadays would be for a developer to specify a containerised environment using a tool such as Docker or Kubernetes, effectively creating an isolated "container" which contains all the environmental requirements needed to run a desired program. A bare-metal service would then simply bill the developer based on pre-defined billing criteria such as CPU runtime, memory usage and network bandwidth consumption.
+The offering of a Cloud-service provider can be thought of as the balance of two philosophies: ``bare-metal" providers, and managed solutions. Bare-metal refers to the act of simply provisioning computing resources on a machine, the specifics of which are left up to the user to implement. The state-of-the-art nowadays would be for a developer to specify a containerised environment using a tool such as Docker or Kubernetes, effectively creating an isolated ``container" which contains all the environmental requirements needed to run a desired program. A bare-metal service would then simply bill the developer based on pre-defined billing criteria such as CPU runtime, memory usage and network bandwidth consumption.
 
 \begin{figure}[h]
     \begin{center}
@@ -104,7 +104,7 @@ However, all these benefits come at the cost: Firebase is closed-source and has 
 
 \begin{itemize}
     \item Databases are accessed directly by clients instead of a back-end endpoint through the Firestore or Realtime Database APIs.
-    \item Firebase-provided databases are strictly non-relational (noSQL). Firebase offers no "bare-metal" products for developers to spin up their own databases using other paradigms.
+    \item Firebase-provided databases are strictly non-relational (noSQL). Firebase offers no ``bare-metal" products for developers to spin up their own databases using other paradigms.
     \item On-demand compute comes in the form of Firebase Cloud Functions, which is designed for small bursts of computation instead of long-running loops. The latter is still possible, but the resulting bill would be unfeasible.
     \item Cloud Functions currently only supports REST APIs and only supports a limited range of runtime environments.
 \end{itemize}
@@ -114,7 +114,7 @@ Despite these, Firebase provides key functionality which may prove extremely val
 In summary, the features that it provides will service the needs of future development on this project for a long time to come. Even if it should scale beyond that point, there should be enough resources to facilitate a migration away from Firebase anyway.
 
 \section{Evaluation Plan}
-Instead of the typical academic approach of conducting individual user studies on a select sample, this app hopes to build feedback in to the app as part of the user experience. The app is thus hosted on a cloud provider with a generous "free tier" allowance, allowing us to experiment with a sizeable user base of what we estimate to be up to 500 users before cloud computing costs actually start to kick in.
+Instead of the typical academic approach of conducting individual user studies on a select sample, this app hopes to build feedback in to the app as part of the user experience. The app is thus hosted on a cloud provider with a generous ``free tier" allowance, allowing us to experiment with a sizeable user base of what we estimate to be up to 500 users before cloud computing costs actually start to kick in.
 
 For this study, the concerns are not to develop the world's best-selling productivity app or to gain traction with a massive user base. This preliminary phase of the project is to find a way to measurably determine how effectively the Sage platform does its job of helping users stay on task. The refinement, re-selection and validity of these metrics will have to be determined as part of future work when the app is released in beta to the test audience. As an example, we may wish to measure a given user's productivity on a day-to-day basis by capturing a ``productive window'' in which a user continues to execute tasks without a significant (15 minute) disruption.
 
@@ -135,7 +135,7 @@ In the interest of brevity, the GDPR checklist can be found \href{https://gdpr.e
 
 \begin{itemize}
     \item Once implemented, users will be explicitly informed via a transparent and detailed privacy policy what data we collect for evaluation metrics and how we will use it. The usage of the app requires the user to consent to this, as there is otherwise no point in offering the service which could otherwise incur cloud computing costs.
-    \item The application does not capture any data defined by the GDPR as "personal", except for the user's email. Evaluation metrics, while potentially changing over the course of the project, should not allow the de-anonymisation of a given user.
+    \item The application does not capture any data defined by the GDPR as ``personal", except for the user's email. Evaluation metrics, while potentially changing over the course of the project, should not allow the de-anonymisation of a given user.
     \item Data will be sent and stored using secure channels, using third-party GDPR compliant vendors where applicable.
     \item In the unlikely event of a data leak, users will be immediately informed via email what was leaked. However, none of this data should be particularly harmful to a user even if this should happen.
     \item Users may at any time erase all their usage data within the settings menu.
