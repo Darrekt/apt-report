@@ -2,6 +2,7 @@
 \section{Summary of Achievements}
 \subsection{Engineering Milestones}
 \begin{table}[h]
+	\centering
 	\begin{tabular}{l|cc}
 		Feature                          & Sage & Within     \\
 		\hline
@@ -15,17 +16,18 @@
 	\label{tab:devops_milestones}
 \end{table}
 
-Table \ref{tab:devops_milestones} summarises the infrastructure and DevOps improvements made throughout this run of the project. Within implements many automated processes which were not present in Sage, and has a fully automated push-to-release CI/CD process, which eliminates possibility for the compromise of secure keys and incorrect version uploads.
+Table \ref{tab:devops_milestones} summarises the infrastructure and DevOps improvements made throughout this run of the project. Within implements many automated processes which were not present in Sage, and has a fully automated push-to-release CI/CD process, which eliminates possibility for the compromise of secure keys and incorrect version uploads. The improved infrastructure allows developers to solely focus on creating new features on the app.
 
 \subsection{Feature Offerings}
 \begin{table}[h]
+	\centering
 	\begin{tabular}{l|ccc}
 		Feature                   & Sage       & Within (Android) & Within (iOS) \\ \hline
 		Todo list                 & \checkmark & \checkmark       & \checkmark   \\ \hline
 		Pomodoro timer            & \checkmark & \checkmark       & \checkmark   \\ \hline
 		Daily task scheduling     & \checkmark & \checkmark       & \checkmark   \\ \hline
 		Visualisations            & \checkmark & \checkmark       & \checkmark   \\ \hline
-		Notification blocking     & ?          & \checkmark       & \checkmark   \\ \hline
+		Notification blocking     & ?          & \checkmark       &              \\ \hline
 		Projects and deadlines    &            & \checkmark       & \checkmark   \\ \hline
 		Productivity history      &            & \checkmark       & \checkmark   \\ \hline
 		\begin{tabular}[c]{@{}l@{}}Real-time multi-device \\ synchronisation\end{tabular} &            & \checkmark       & \checkmark   \\ \hline
@@ -38,7 +40,7 @@ Table \ref{tab:devops_milestones} summarises the infrastructure and DevOps impro
 	\label{tab:feature_milestones}
 \end{table}
 
-
+Within offers a much richer set of features over Sage, as reflected in Table \ref{tab:feature_milestones}. A structured productivity framework has been added, which is fully synchronised in real-time to an online datastore. Additional functionalities have been added to the productivity timer while helps the user stay focused above possible distractions. Completion of tasks is also timestamped in the database, which can be used to produce analytics on user productivity habits which may drive future feature development.
 
 \section{User Feedback}
 \subsection{Deployment and Release}
