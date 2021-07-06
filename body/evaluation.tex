@@ -40,10 +40,10 @@ Table \ref{tab:devops_milestones} summarises the infrastructure and DevOps impro
 	\label{tab:feature_milestones}
 \end{table}
 
-Within offers a much richer set of features over Sage, as reflected in Table \ref{tab:feature_milestones}. A structured productivity framework has been added, which is fully synchronised in real-time to an online datastore. Additional functionalities have been added to the productivity timer while helps the user stay focused above possible distractions. Completion of tasks is also timestamped in the database, which can be used to produce analytics on user productivity habits which may drive future feature development.
+Within offers a much richer set of features over Sage, as reflected in Table \ref{tab:feature_milestones}. A structured productivity framework has been added, which is fully synchronised in real-time to an online datastore. Additional functionalities have been added to the productivity timer which helps the user stay focused above possible distractions. Completion of tasks is also timestamped in the database, which can be used to produce analytics on user productivity habits which may drive future feature development.
 
 \section{User Feedback}
-\subsection{Deployment and Release}
+\subsection{App Store Release}
 An original goal of this run of the project was to deploy the application on the Google Play store for Android and the App store for Apple devices. However, a number of unforeseen circumstances have surfaced to prevent this:
 
 \begin{itemize}
@@ -53,9 +53,12 @@ An original goal of this run of the project was to deploy the application on the
 	\item Increased app store review times at the time of intended submission meant that the app could not be live before the project deadline.
 \end{itemize}
 
-While all the above criteria are technically possible to fulfill with temporary placeholders, the release process involves several rounds of internal testing to invite-exclusive testers. Due to project and time constraints, this internal testing can be manually executed through the automated Github release, since feedback has been built-in as part of the app interface. This allows us to properly prepare the relevant resources for an app store release over the summer, in time for the next run of the project to resume development.
+The release process involves several rounds of internal testing to invite-exclusive testers. Due to project and time constraints, this internal testing has been manually executed through the automated Github release discussed previously. Feedback has been built-in as part of the app interface, which facilitates iterative development while we properly prepare the relevant resources for an app store release over the summer, in time for the next run of the project to resume development.
 
-Modern app users have extremely high expectations of apps. Slight amounts of jitter or other frustration through the user experience can be a death sentence, causing a user to uninstall an app. However, iterative development is the only way of producing an app of passable quality. This results in a chicken-and-egg problem, which is solved using incremental releases. The Google Play ecosystem supports this out-of-the-box, encouraging developers to use their internal frameworks which release the app to a gradually increasing audience as follows:
+\subsection{Feedback-based Incremental Releases}
+Modern app users have extremely high expectations of apps. Slight amounts of jitter, unexpected crashes or other frustrations encountered through the user experience can be a death sentence, causing a user to uninstall an app just off of a spoiled first impression. A stable app which delivers a pleasant user experience with only minor, tolerable glitches is known among the developer commmunity as a production-quality app. However, feedback-based iterative development is the only way of producing an app of such quality. This results in a chicken-and-egg problem, which is solved using the process of incremental releases.
+
+Incremental release is the practice of gradually increasing the pool of users that the app is available to as quality and developer confidence in the finished product improves based on feedback-based development. The Google Play ecosystem supports this out-of-the-box, encouraging developers to use their internal frameworks which release the app to a gradually increasing audience as follows:
 
 \begin{itemize}
 	\item Internal Testing: The app is first released to an invite-only email list of up to 100 internal testers, chosen by the developer. Feedback must be manually aggregated.
@@ -64,15 +67,15 @@ Modern app users have extremely high expectations of apps. Slight amounts of jit
 \end{itemize}
 
 \subsection{Qualitative Results}
-Without access to either app store, conducting internal testing manually is the only option available within this run of the project. 20 Android users were chosen to test the app. Some examples of the initially reported problems were as follows:
+20 Android users were chosen to test the app. Some examples of the initially reported problems were as follows:
 
 \begin{itemize}
 	\item Onboarding screens were not rendering consistently across different Android devices.
 	\item Some users reported uninformed crashes or incorrect dialogs during the sign-in process.
 	\item Some interactive elements did not work consistently on some users' devices.
-	\item The focus timer itself did not offer enough incentive to stay within the app. Users still were distracted and went to use other apps without receiving a push notification ``trigger''.
+	\item The focus timer itself did not offer enough incentive to stay within the app. Users still got distracted and went to use other apps without any external distracting stimulus.
 \end{itemize}
 
-This highlights a problem with cross-platform development. Many phone manufacturers develop their own flavour of the Android operating system which uses the underlying open-source Android kernel, but introduces slight differences which are difficult for developers to cater for. As such, features which may perform as expected on an emulator or a given user's phone may misbehave on another. The use of libraries in React Native adds a further level of abstraction which may contain platform and version-specific code, and therefore the reasons why a given bug may exist can be very difficult to track. Fortunately, due to the in-app feedback infrastructure and cloud-sync functionalities of the app, it is possible to add crash reporting functionality to the app which logs the user's device information along with the crash logs.
+The technical problems reported highlight a problem with cross-platform development: Many phone manufacturers develop their own flavour of the Android operating system which uses the underlying open-source Android kernel, but introduces slight differences which are difficult for developers to cater for. As such, features which may perform as expected on an emulator or a given user's phone may misbehave on another. The use of libraries in React Native adds a further level of abstraction on top of native Android APIs which may contain platform and version-specific code, and therefore the reasons why a given bug may exist can be very difficult to track. Fortunately, due to the in-app feedback infrastructure and cloud-sync functionalities of the app, it is possible to add crash reporting functionality to the app which logs the user's device information along with the crash logs.
 
 After a few initial rounds of feedback and bug-fixing, users reported a pleasant app experience and reported that while they enjoyed the app and its concept, they would like to see more features, which will be documented in the future works section.

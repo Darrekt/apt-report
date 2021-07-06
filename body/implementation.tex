@@ -77,7 +77,7 @@ The paradigm of `thinking in React' has now become so popular that React is a do
 
 As mentioned before, Within also makes extensive use of TypeScript (TS), which greatly increases code clarity and reduces runtime errors using compile-time type-checks, at the cost of writing slightly more upfront code. Since TypeScript is a typed superset of JavaScript (JS), this means that all valid JS code is valid TS code, and the result is a natural learning curve which a given develop can lean into as much as they prefer.
 
-The root React node is contained in \texttt{App.tsx}, which contains other setup code for libraries which require initialisation outside of the standard React component lifecycle. Before proceeding, developers should read the documentation links below, as these concepts are heavily used in this repository. At minimum, a thourough understanding of the React component life cycle, as well as the \texttt{useEffect} post-render hook are required to understand the sections to come.
+The root React node is contained in \texttt{App.tsx}, which contains other setup code for libraries which require initialisation outside of the standard React component lifecycle. Before proceeding, developers should read the documentation links below, as these concepts are heavily used in this repository. At minimum, a thorough understanding of the React component life cycle, as well as the \texttt{useEffect} post-render hook are required to understand the sections to come.
 
 \begin{itemize}
     \item \href{https://reactjs.org/docs/hello-world.html}{React Docs} - the starting point for any React developer. Read all main concepts.
@@ -91,7 +91,7 @@ The root React node is contained in \texttt{App.tsx}, which contains other setup
 Navigation loosely refers to the practice of directing the user to different parts of the app using a visual experience. All navigation is implemented with the React-navigation\footnote{\href{https://reactnavigation.org}{React Navigation documentation}} library, which implements conditionally rendered fullscreen pages based on named routes. All routes are contained and enumerated in \texttt{navConstants.ts}.
 
 \subsubsection{Global App State}
-Within is a write-heavy application, with state that changes on every interaction. Such state needs to be accessible in different parts of the component tree, motivating the use of a single, global state provided by context at the root of the tree. However, global states require careful management and needs to be mutated in a stable manner to prevent crashing the app. All of these problems are solved by the Redux paradigm, which promotes the use of a single, immutable state contained in a plain, serializable JavaScript object.
+Within is a write-heavy application, with state that changes on every interaction. Such state needs to be accessible in different parts of the component tree, motivating the use of a single, global state provided by context at the root of the tree. However, global states require careful management and need to be mutated in a stable manner to prevent crashing the app. All of these problems are solved by the Redux paradigm, which promotes the use of a single, immutable state contained in a plain, serializable JavaScript object.
 
 \begin{figure}[h]
     \begin{center}
@@ -101,7 +101,7 @@ Within is a write-heavy application, with state that changes on every interactio
     \label{fig:redux_state}
 \end{figure}
 
-Redux\footnote{\href{https://redux.js.org/usage/usage-with-TypeScript}{Redux documentation}} is a state-management paradigm which generates new states based only on the current state and a descriptive action, the processing of which is handled by a pure function that contains no side-effects (called a reducer). App state is purely contained within a serializable JavaScript plain object, which means the state will not contain any moving or self-mutating parts. The resulting state is always predictable and thus easy to debug. Since states simply transform from one to another in a sequence instead of mutating, state-recording debugging methods such as time-travel debugging, crash logging and an undo history are easily implementable.
+Redux\footnote{\href{https://redux.js.org/usage/usage-with-TypeScript}{Redux documentation}} is a state-management paradigm which generates new states based only on the current state and a descriptive action, the processing of which is handled by a pure function that contains no side-effects (called a reducer). The app state is purely contained within a serializable JavaScript plain object, which means the state will not contain any moving or self-mutating parts. The resulting state is always predictable and thus easy to debug. Since states simply transform from one to another in a sequence instead of mutating, state-recording debugging methods such as time-travel debugging, crash logging and an undo history are easily implementable.
 
 Since its inception, Redux has developed a rich ecosystem, which has unfortunately resulted in unstandardised documentation and practices. The current best practice for using Redux is to use Redux-toolkit\footnote{\href{https://redux-toolkit.js.org}{Redux toolkit documentation}} along with library-specific bindings, and thus Within implements global state using Redux-toolkit and React-redux\footnote{\href{https://react-redux.js.org}{React-redux documentation}}.
 
@@ -163,7 +163,7 @@ The challenge now is accessing native android APIs from within React Native. As 
 \subsection{Disruption Detection}
 Even with notifications disabled, users are likely to be distracted when faced with roadblocks or difficult tasks, and may flee the app to seek momentary relief on social media or other distracting apps. A solution to this would be if the Within app could detect when such distractions occur, and prompt the user's pre-frontal cortex to wrest back control.
 
-Apps on phones typically adopt one of three states: they are either foregrounded, backgrounded or inactive. React Native provides nice utilities around these states \footnote{React Native AppState documentation available \href{https://reactnative.dev/docs/next/appstate}{here}}, allowing the developer to attach callback functions when such state transitions are triggered.
+Apps on phones typically adopt one of three states: they are either foregrounded, backgrounded or inactive. React Native provides nice utilities around these states\footnote{React Native AppState documentation available \href{https://reactnative.dev/docs/next/appstate}{here}}, allowing the developer to attach callback functions when such state transitions are triggered.
 
 The relevant listener is subscribed in \texttt{TodoTimer.tsx}. The relevant code attaches an event handler in a post-render hook using \texttt{useEffect}. Since the timer component re-renders whenever the selected task changes, it is necessary to re-subscribe the listener whenever the timer re-renders, and the selected todo is therefore included in the dependency array.
 
@@ -229,7 +229,7 @@ A few noteworthy ways in which the implemented UI conforms to these principles a
     \item All interactive elements provide visual and animated feedback, using a transient opacity or highlight. This provides instant feedback and minimises the gulf of evaluation.
 \end{itemize}
 
-The resulting user interface is described by early testers as ``clean and minimal'', providing a much more compact user experience in which users can perform most of the app's base functionality without switching off of the main screen.
+The resulting user interface is described by early testers as ``clean and minimal'', providing a much more compact user experience as compared to Sage, in which users can perform most of the app's base functionality without switching off of the main screen.
 
 \section{Limitations and Issues}
 The mechanisms of the Within project have been clearly documented. However, many parts of the application remain untested. Due to the limitations of solo development, testing was only strictly enforced on business logic and database sensitive operations. Ideally, snapshot tests would be implemented to ensure a consistent user interface and experience across different devices. A few known issues are listed below:
